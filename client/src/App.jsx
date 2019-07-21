@@ -3,6 +3,7 @@ import './App.css';
 import axios from 'axios';
 import Login from './Login';
 import Signup from './Signup';
+import Home from './Home';
 
 class App extends React.Component {
   constructor(props) {
@@ -84,6 +85,7 @@ class App extends React.Component {
         <>
           <p>Hello, {user.name}</p>
           <p onClick={this.logout}>Logout</p>
+          <Home />
         </>
       );
     } else {
