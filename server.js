@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const expressJWT = require('express-jwt');
 const helmet = require('helmet');
 const RateLimit = require('express-rate-limit');
+const Meal = require('./models/meal');
+
 
 const app = express();
 
@@ -35,6 +37,67 @@ db.once('open', () => {
 db.on('error', (err) => {
   console.log(`Database error:\n ${err}`);
 });
+
+
+mongoose.connect('mongodb://localhost/nutri_facts-2');
+
+app.get('/meals', (req,res) => {
+    Meal.find({}, function(err,meals){
+        if (err) res.json(err)
+        res.json(meals)
+    })
+    
+})
+
+app.get('meals/:id', (req,res) => {
+    Meal.findById(req.params.id), function(err, meals) {
+    if (err) {
+        res.json(err)
+    }
+    res.json(meals)
+ }
+})
+
+
+app.post('/meals', (req,res) => {
+    Meal.create({
+    food: req.body.food,
+    dish: req.body.dish,
+    type: req.body.type,
+    date: req.body.date,
+    nutrition: req.body.nutrition 
+
+    }, function(err, meals) {
+        res.json(meals)
+  })
+})
+
+
+app.put("/meals/:id", (req,res) => {
+    Meal.findByIdAndUpdate(req.params.id, {
+        food: req.body.food,
+        dish: req.body.dish,
+        type: req.body.type,
+        date: req.body.date,
+        nutrition: req.body.nutrition
+    }, {
+        new: true
+    }, (err, meals) =>  {
+        res.json(meals);
+    });
+    });
+
+
+      app.delete("/meals/:id", (req,res) => {
+        Meal.findByIdAndRemove(req.params.id, function(err){
+            if (err) {
+              res.json(err);
+            }
+            res.json({message: "Delete"})
+        })
+    })
+      
+
 
 
 // app.use('/auth/login', loginLimiter);
