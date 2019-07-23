@@ -33,11 +33,12 @@ class Signup extends React.Component {
           name: '',
           email: '',
           password: '',
-          messag: res.data.message
+          message: res.data.message
         })
       } else {
         localStorage.setItem('mernToken', res.data.token);
         this.props.liftToken(res.data);
+        this.props.history.push('/');
       }
     }).catch(err => {
       this.setState({
@@ -56,7 +57,8 @@ class Signup extends React.Component {
           <input onChange={this.handleInputChange} type='text' value={this.state.email} name='email' placeholder='Enter your email here'/><br/>
           <input onChange={this.handleInputChange} type='password' value={this.state.password} name='password' placeholder='Enter your password here'/><br/>
           <input type='submit' value='Signup' />
-        </form> 
+        </form>
+        <p className='error'>{this.state.message}</p>
       </div>
     );
   }
