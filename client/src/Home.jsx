@@ -2,6 +2,7 @@ import React from 'react';
 import DayMealsCharts from './DayMealsCharts';
 import DayMealsHistory from './DayMealsHistory';
 import DayMealsRecomm from './DayMealsRecomm';
+import Header from './Header';
 
 class Home extends React.Component {
   constructor(props) {
@@ -30,6 +31,7 @@ class Home extends React.Component {
     ]
 
     return (
+
       <div className='info day-meals-container'>
         <DayMealsCharts goals={goals} meals={meals}/>
         <DayMealsRecomm />
