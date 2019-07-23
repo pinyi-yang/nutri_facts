@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const mealSchema = new mongoose.Schema({
-    food: String,
-    dish: String,
+    food: [],
+    dish: [],
     type: String,
     date: Date,
-    nutrition: []
+    nutrition: {}
   });
-  
-  module.exports = mongoose.model('Meal', mealSchema);
+
+module.exports = mongoose.model('Meal', mealSchema);
