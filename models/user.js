@@ -20,9 +20,8 @@ const userSchema = new mongoose.Schema({
     minlength: [5, 'Email must between 5 and 99 characters'],
     maxlength: [99, 'Email must between 5 and 99 characters']
   },
-  goals: {
-    type: String
-  }
+  meals: [{type: mongoose.Schema.Types.ObjectId, ref: 'Meal'}]
+
 });
 
 userSchema.set('toObject', {

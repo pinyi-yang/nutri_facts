@@ -2,17 +2,22 @@ import React from 'react';
 import DayMealsCharts from './DayMealsCharts';
 import DayMealsHistory from './DayMealsHistory';
 import DayMealsRecomm from './DayMealsRecomm';
-import ProfileBar from './ProfileBar'
+import ProfileBar from './ProfileBar';
+import axios from 'axios';
 
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      meals: [],
+      pendingMeal: []
     }
   }
 
+  handNewMealSubmit(foods, dishes, type) {
+    
+  }
 
   render() {
     const goals = [
@@ -30,11 +35,13 @@ class Home extends React.Component {
       {x: 4, y: 6},
       {x: 5, y: 0.5}
     ]
-
+    
     return (
       <div className='main'>
 
-        <ProfileBar />
+        <ProfileBar 
+                  user={this.props.user}
+                  />
 
         <div className='info day-meals-container'>
           <DayMealsCharts goals={goals} meals={meals}/>
