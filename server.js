@@ -107,5 +107,5 @@ app.use('/auth', require('./routes/auth'));
 app.use('/api', expressJWT({secret: process.env.JWT_SECRET}), require('./routes/api'));
 
 app.listen(process.env.PORT, () => {
-  console.log('🖲🖲🖲 server connected to port ' + process.env.PORT);
+  console.log('🖲🖲🖲 server connected to port ' + process.env.PORT || 3001);
 })
