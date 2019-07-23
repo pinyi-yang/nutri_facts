@@ -4,6 +4,14 @@ import axios from 'axios';
 import Login from './Login';
 import Signup from './Signup';
 import Home from './Home';
+import LandingPage from './LandingPage'
+import Header from './Header';
+import ProfileBar from './ProfileBar'
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
 
 class App extends React.Component {
   constructor(props) {
@@ -77,30 +85,50 @@ class App extends React.Component {
 
   render() {
     var user = this.state.user;
-    var contents;
+    var contents = (
+      <Route exact path='/' render={() => (
+        <LandingPage liftToken={this.liftToken} />
+      )}
+      />
+    );
     if (user) {
       //have a user
-      console.log(user);
       contents = (
-        <>
-          <p>Hello, {user.name}</p>
-          <p onClick={this.logout}>Logout</p>
-          <Home />
-        </>
-      );
-    } else {
-      //if no user
-      contents = (
-        <>
-          <p>Please login</p>
-          <Login liftToken = {this.liftToken} />
-          <p>or signup</p>
-          <Signup liftToken = {this.liftToken} />
-        </>
-      );
+        <Route exact path='/' render={() => (
+          <Home liftToken={this.liftToken} />
+        )}
+        />
+      )
     }
+    //     <>
+    //       {/* <p>Hello, {user.name}</p>
+    //       <p onClick={this.logout}>Logout</p> */}
+    //       <Home />
+    //     </>
+    //   );
+    // } else {
+    //   //if no user
+    //   contents = (
+    //     <>
+    //       <p>Please login</p>
+    //       <Login liftToken = {this.liftToken} />
+    //       <p>or signup</p>
+    //       <Signup liftToken = {this.liftToken} />
+    //     </>
+    //   );
+    // }
     return (
-      contents
+      <Router>
+        <Header logout={this.logout}/>
+        <ProfileBar />
+
+        {contents}
+        {/* <Route exact path="/" component={Home} /> */}
+        <Route exact path="/login" render={(props) => (
+          <Login {...props} liftToken={this.liftToken}/>
+        
+        )} />
+      </Router>
     );
   }
 }
