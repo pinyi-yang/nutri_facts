@@ -30,7 +30,7 @@ class Home extends React.Component {
     ]
 
     return (
-      <div claaName='info'>
+      <div className='info day-meals-container'>
         <DayMealsCharts goals={goals} meals={meals}/>
         <DayMealsRecomm />
         <DayMealsHistory />
