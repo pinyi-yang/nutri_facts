@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Meal = require('../models/meals');
+const Meal = require('../models/meal');
 
 router.get('/', (req, res) => {
   res.json({type: 'success', message: 'You access the protected API route'});
