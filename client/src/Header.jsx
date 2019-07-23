@@ -12,9 +12,11 @@ const Header = (props) => {
   return (
       <header className="App-header">
         <img id="header-img" src="/nutri-facts.png" alt=""/>
-        <button onClick={props.logout}>Logout</button>
-        <Link to='/login' >Login</Link>
-        <button onClick={props.signup}>Sign Up</button>
+        <nav>
+          <button onClick={props.logout}>Logout</button>
+          <Link to='/login' >Login</Link>
+          <button onClick={props.signup}>Sign Up</button>
+        </nav>
       </header>
   )
 }

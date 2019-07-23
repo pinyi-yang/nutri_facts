@@ -6,7 +6,6 @@ import Signup from './Signup';
 import Home from './Home';
 import LandingPage from './LandingPage'
 import Header from './Header';
-import ProfileBar from './ProfileBar'
 import {
   BrowserRouter as Router,
   Route,
@@ -120,7 +119,6 @@ class App extends React.Component {
     return (
       <Router>
         <Header logout={this.logout}/>
-        <ProfileBar />
 
         {contents}
         {/* <Route exact path="/" component={Home} /> */}
