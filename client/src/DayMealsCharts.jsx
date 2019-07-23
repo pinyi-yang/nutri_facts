@@ -13,13 +13,13 @@ const DayMealsCharts = props => {
   return (
     <div className='day-meals-chart'>
       this will generate a chart about day meal nutriction by React Vis.
-      <XYPlot height={300} width={400} stackBy='y'>
+      <XYPlot height={200} width={300} stackBy='y'>
         <DiscreteColorLegend 
           items={[
             {title: "Goals"},
             {title: "Meals"}
           ]} 
-          style={{position: 'absolute', right: '50px', top: '10px'}}
+          style={{position: 'absolute', right: '15px', top: '10px'}}
 
         />
         <VerticalBarSeries data={props.goals} />

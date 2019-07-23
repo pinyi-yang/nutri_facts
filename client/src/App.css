@@ -1,22 +1,95 @@
+
+* {
+  border: black solid 0.5px;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.day-meals-container {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  height: 18vh;
+  text-align: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+#header-img {
+  height: 16vh;
+}
+
+.main {
+  position: fixed;
+  top: 18vh;
+  min-width: 100vw;
+  height: 82vh;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+
+.info {
+  text-align: center;
+  overflow: scroll;
+}
+
+.rv-xy-plot {
+  text-align: center;
+  padding-left: 35em;
+}
+
+.profileBar {
+}
+
+.sidebar, a {
+  display: block;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.sidebar a {
+  padding: 12px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #292828;
+  display: block;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.Login, .Signup {
+  text-align: center;
+}
+
+#profilePic {
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+nav {
+  background: white;
+  display: flex;
+  justify-content: space-around;
+  min-width: 300px;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+#landing {
+  text-align: center;
 }
 
 .App-link {
@@ -31,3 +104,4 @@
     transform: rotate(360deg);
   }
 }
+
