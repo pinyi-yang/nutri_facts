@@ -21,6 +21,7 @@ const userSchema = new mongoose.Schema({
     maxlength: [99, 'Email must between 5 and 99 characters']
   },
   meals: [{type: mongoose.Schema.Types.ObjectId, ref: 'Meal'}]
+
 });
 
 userSchema.set('toObject', {
