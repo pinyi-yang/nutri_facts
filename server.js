@@ -5,6 +5,7 @@ const expressJWT = require('express-jwt');
 const helmet = require('helmet');
 const RateLimit = require('express-rate-limit');
 const Meal = require('./models/meal');
+const methodoverride = require('method-override')
 
 
 const app = express();
