@@ -94,7 +94,7 @@ class App extends React.Component {
       //have a user
       contents = (
         <Route exact path='/' render={() => (
-          <Home liftToken={this.liftToken} />
+          <Home liftToken={this.liftToken} user={user}/>
         )}
         />
       )
