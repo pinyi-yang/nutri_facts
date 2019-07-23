@@ -1,10 +1,6 @@
 
 * {
   border: black solid 0.5px;
-
-#root {
-  position: relative;
-  display: grid;
 }
 
 .App {
@@ -17,17 +13,28 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  height: 18vh;
+  text-align: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
+#header-img {
+  height: 16vh;
+}
+
+.main {
+  position: fixed;
+  top: 18vh;
+  min-width: 100vw;
+  height: 82vh;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+
 .info {
   text-align: center;
+  overflow: scroll;
 }
 
 .rv-xy-plot {
@@ -36,15 +43,6 @@
 }
 
 .profileBar {
-  height: 100%;
-  width: 160px;
-  position: relative;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: rgba(17, 17, 17, 0.705);
-  overflow-x: hidden;
-  padding-bottom: 100px;
 }
 
 .sidebar, a {
@@ -78,8 +76,16 @@
   margin-right: auto;
 }
 
-#header-img {
-  height: 150px;
+
+
+nav {
+  background: white;
+  display: flex;
+  justify-content: space-around;
+  min-width: 300px;
+  position: absolute;
+  top: 5px;
+  right: 10px;
 }
 
 #landing {
