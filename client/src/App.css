@@ -1,3 +1,7 @@
+
+* {
+  border: black solid 0.5px;
+
 #root {
   position: relative;
   display: grid;
@@ -7,10 +11,9 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.day-meals-container {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
 }
 
 .App-header {
@@ -95,3 +98,4 @@
     transform: rotate(360deg);
   }
 }
+
