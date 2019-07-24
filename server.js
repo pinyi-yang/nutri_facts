@@ -6,7 +6,7 @@ const helmet = require('helmet');
 const RateLimit = require('express-rate-limit');
 const User = require('./models/user')
 const Meal = require('./models/meal');
-const User = require('./models/user');
+// const User = require('./models/user');
 const Goal = require('./models/goal')
 
 const app = express();
@@ -207,12 +207,12 @@ app.post('/api/nutritionsearch',(req,res)=>{
 
 
 
-    if (err) {
-    res.json(err);
-      }
-    res.json({message: "Delete"})
-    })
-})
+//     if (err) {
+//     res.json(err);
+//       }
+//     res.json({message: "Delete"})
+//     })
+// })
 
 
   
