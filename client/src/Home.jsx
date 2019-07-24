@@ -3,7 +3,14 @@ import DayMealsCharts from './DayMealsCharts';
 import DayMealsHistory from './DayMealsHistory';
 import DayMealsRecomm from './DayMealsRecomm';
 import ProfileBar from './ProfileBar';
+import AddMealForm from './AddMealForm';
+import PendingMeal from './PendingMeal';
 import axios from 'axios';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
 
 
 class Home extends React.Component {
@@ -11,13 +18,38 @@ class Home extends React.Component {
     super(props);
     this.state = {
       meals: [],
-      pendingMeal: []
+      pendingMeal: {
+        type: '',
+        foods: '',
+        dishes: ''
+      },
+      addMeal: false
     }
+    this.handNewMealSubmit = this.handNewMealSubmit.bind(this);
+    this.handleAddMealClick = this.handleAddMealClick.bind(this);
   }
 
-  handNewMealSubmit(foods, dishes, type) {
-    
+  handleAddMealClick() {
+    this.setState({
+      addMeal: !this.state.addMeal
+    })
   }
+
+  //add options to pending meal
+  handleMealOptionSelect() {
+
+  }
+
+  handNewMealSubmit(e, foods, dishes, type) {
+    e.preventDefault();
+    let foodsarr = foods.split(/,\s*/);
+    let dishesarr = dishes.split(/,\s*/);
+    console.log(foodsarr, dishesarr, type);
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('mernToken');
+    axios.post(`/api/users/${this.props.user._id}/meals`, {foodsarr, dishesarr, type})
+  }
+
+
 
   render() {
     const goals = [
@@ -35,19 +67,38 @@ class Home extends React.Component {
       {x: 4, y: 6},
       {x: 5, y: 0.5}
     ]
-    
+
+
+    if (this.state.addMeal) {
+      var infosub = (
+        <>
+          <AddMealForm />
+          <PendingMeal />
+        </>
+      )
+    } else {
+      infosub = (
+        <>
+          <DayMealsRecomm />
+          <DayMealsHistory />
+        </>
+      )
+    }
     return (
       <div className='main'>
 
         <ProfileBar 
                   user={this.props.user}
+                  handNewMealSubmit={this.handNewMealSubmit}
+                  handleAddMealClick={this.handleAddMealClick}
                   />
 
-        <div className='info day-meals-container'>
-          <DayMealsCharts goals={goals} meals={meals}/>
-          <DayMealsRecomm />
-          <DayMealsHistory />
-        </div>
+        <Router>
+          <div className='info day-meals-container'>
+            <DayMealsCharts goals={goals} meals={meals}/>
+            {infosub}
+          </div>
+        </Router>
       </div>
     );
   }

@@ -98,16 +98,25 @@ nav {
   text-align: center;
 }
 
-.App-link {
-  color: #61dafb;
+/* * here is for AddMealForm.jsx */
+#add-meal-container {
+  display: grid;
+  grid-template-rows: 1fr 5fr;
+}
+.add-meal-form form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.meals-options-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  height: 100%;
 }
 
+.meals-option {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
