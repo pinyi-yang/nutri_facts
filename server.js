@@ -6,7 +6,8 @@ const helmet = require('helmet');
 const RateLimit = require('express-rate-limit');
 const User = require('./models/user')
 const Meal = require('./models/meal');
-const methodoverride = require('method-override')
+const User = require('./models/user');
+const Goal = require('./models/goal')
 
 
 const app = express();
@@ -16,18 +17,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(helmet());
 
-const loginLimiter = new RateLimit({
-  windowMs: 5*60*1000,
-  max: 3,
-  delayMs: 0,
-  message: "Maximum login attempts exceeded!"
-})
-const signupLimiter = new RateLimit({
-  windowMs: 60*60*1000,
-  max: 3,
-  delayMs: 0,
-  message: "Maximum accounts created. Please try again later."
-})
+// const loginLimiter = new RateLimit({
+//   windowMs: 5*60*1000,
+//   max: 30,
+//   delayMs: 0,
+//   message: "Maximum login attempts exceeded!"
+// })
+// const signupLimiter = new RateLimit({
+//   windowMs: 60*60*1000,
+//   max: 30,
+//   delayMs: 0,
+//   message: "Maximum accounts created. Please try again later."
+// })
 
 
 
@@ -40,6 +41,9 @@ db.on('error', (err) => {
   console.log(`Database error:\n ${err}`);
 });
 
+
+
+// mongoose.connect('mongodb://localhost/nutri_facts-2');
 
 
 app.get('/users', (req,res) => {
@@ -116,7 +120,6 @@ app.delete("/users/:uid/meals/:mid", (req,res) => {
     })
 })
 
-
 app.get('/meals', (req,res) => {
     Meal.find({}, function(err,meals){
         if (err) res.json(err)
@@ -159,12 +162,59 @@ app.put("/meals/:id", (req,res) => {
 
 app.delete("/meals/:id", (req,res) => {
   Meal.findByIdAndRemove(req.params.id, function(err){
+
+      if (err) {
+        res.json(err);
+      }
+      res.json({message: "Delete"})
+  })
+})
+
+// creates goal for a specific user
+app.post('/user/:uid/goals', (req,res) => {
+  User.findById(req.params.uid).populate('goals').exec( (err, user) => {
+    if (err) {
+      res.json(err);
+    }
+    var {calories, fat, protein, fiber} = req.body
+    Goal.create({calories, fat, protein, fiber}, function(err, goal) {
+      user.goals.push( goal );
+      console.log(user);
+      user.save();
+      res.json(user);
+    })
+
+    })
+})
+
+
+app.post('/api/foodsearch',(req,res)=>{
+  let foodApiUrl = `https://api.edamam.com/api/food-database/parser?ingr=peach&app_id=3ca2898f&app_key=cbab023867dfdece8499c75828decc2fs`
+  axios.get(foodApiUrl).then(function(foodData ){
+      res.json(foodData.data)
+  }).catch(function(error){
+      console.log(error);
+  })
+})
+
+app.post('/api/nutritionsearch',(req,res)=>{
+  let nutritionApiUrl = `https://api.edamam.com/api/nutrition-data?app_id=78458070&app_key=7c11ba33bbbd07556c4b22240cd9d626&ingr=1%20large%20apple`
+  axios.get(nutritionApiUrl).then(function(nutritionData){
+      res.json(nutritionData.data)
+  }).catch(function(error){
+      console.log(error);
+  })
+})
+
+
+
     if (err) {
     res.json(err);
       }
     res.json({message: "Delete"})
     })
 })
+
 
   
 // app.use('/auth/login', loginLimiter);

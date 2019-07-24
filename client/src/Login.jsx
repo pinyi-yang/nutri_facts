@@ -29,7 +29,7 @@ class Login extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log("hey im logging in")
+    // console.log("hey im logging in")
     axios.post('/auth/login', {
       email: this.state.email,
       password: this.state.password
@@ -74,6 +74,7 @@ class Login extends React.Component {
                 <br/><br/>
         <input type='submit' value='Login' />
       </form>
+      <p className='error'>{this.state.message}</p>
     </div>
     );
   }
