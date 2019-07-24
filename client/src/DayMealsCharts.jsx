@@ -9,7 +9,7 @@ import {XYPlot,
 
 
 const DayMealsCharts = props => {
-  const xticks = ['fiber', 'suger', 'fat', 'carbonhydrate', 'sodium', 'whatever']
+  const xticks = ['fiber', 'sugar', 'fat', 'carbonhydrate', 'sodium', "Joseph's Swag"]
   return (
     <div className='day-meals-chart'>
       this will generate a chart about day meal nutriction by React Vis.
