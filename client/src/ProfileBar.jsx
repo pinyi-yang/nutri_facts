@@ -56,7 +56,7 @@ class ProfileBar extends React.Component {
     return (
       <div className="profileBar">
         <img id='profilePic' src="/profilePic.png" alt=""/>
-        <p className='profileName'>Hello, {user.name}</p>
+        <p className='profileName'>Hello, {this.props.user.name}</p>
         <div className="sidebar">
           <a href="#">Breakfast</a>
           <a href="#">Lunch</a>

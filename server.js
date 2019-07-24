@@ -198,16 +198,6 @@ app.post('/api/nutritionsearch',(req,res)=>{
   })
 })
 
-
-
-    if (err) {
-    res.json(err);
-      }
-    res.json({message: "Delete"})
-    })
-})
-
-
   
 // app.use('/auth/login', loginLimiter);
 // app.use('/auth/signup', signupLimiter);

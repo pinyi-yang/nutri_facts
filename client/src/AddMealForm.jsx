@@ -9,7 +9,10 @@ class AddMealForm extends React.Component {
       foods: '',
       dishes: '',
       type: '',
-      options: []
+      options: {
+        foods: [],
+        dishes: []
+      }
     }
     this.handleFormChange = this.handleFormChange.bind(this);
     this.handleShowMeal = this.handleShowMeal.bind(this);
@@ -30,14 +33,13 @@ class AddMealForm extends React.Component {
     dishes ? dishesArr = dishes.split(/,\s*/) : dishesArr=[];
     
     this.setState({
-      options: foodsArr.concat(dishesArr),
+      options: {
+        foods: foodsArr,
+        dishes: dishesArr
+      },
       foods: '',
       dishes: ''
     })
-  }
-
-  handleMealOptionSelect(){
-
   }
 
   render() {
@@ -74,7 +76,7 @@ class AddMealForm extends React.Component {
         </div>
 
         <div className='meals-options-list-div'>
-          <MealOptions options={this.state.options} />
+          <MealOptions options={this.state.options.foods.concat(this.state.options.dishes)} />
         </div>
       </div>
     );
