@@ -1,5 +1,6 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { userInfo } from 'os';
+
 
 class ProfileBar extends React.Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class ProfileBar extends React.Component {
   }
   
   render() {
+
     //? old add meal form, replaced by AddMealForm
     // if (this.state.addAMeal) {
     //   var addMealForm = (
@@ -41,7 +43,6 @@ class ProfileBar extends React.Component {
           //     <option value='supper'>Supper</option>
           //     <option value='dessert'>Dessert</option>
           //   </select><br/><br/>
-
           //   Foods:<br/>
           //   <input type='text' name='foods' value={this.state.foods} onChange={this.handleFormChange} placeholder='names for food'/><br/><br/>
           //   Dish:<br/>
@@ -55,6 +56,7 @@ class ProfileBar extends React.Component {
     return (
       <div className="profileBar">
         <img id='profilePic' src="/profilePic.png" alt=""/>
+        <p className='profileName'>Hello, {user.name}</p>
         <div className="sidebar">
           <a href="#">Breakfast</a>
           <a href="#">Lunch</a>

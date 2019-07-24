@@ -76,7 +76,13 @@
   margin-right: auto;
 }
 
+.profileName {
+  text-align: center;
+}
 
+.summaryPage {
+  text-align: center;
+}
 
 nav {
   background: white;
