@@ -95,7 +95,10 @@ class App extends React.Component {
       //have a user
       contents = (
         <Route exact path='/' render={() => (
+          <>
+          <Header logout={this.logout} user={user}/>
           <Home liftToken={this.liftToken} user={user}/>
+          </>
         )}
         />
       )
@@ -103,7 +106,7 @@ class App extends React.Component {
 
     return (
       <Router>
-        <Header logout={this.logout} user={user}/>
+        {/* <Header logout={this.logout} user={user}/> */}
 
         {contents}
         {/* <Route exact path="/" component={Home} /> */}
