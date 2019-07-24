@@ -1,10 +1,5 @@
 import React from 'react';
 import Axios from 'axios';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom';
 
 class DayMealsRecomm extends React.Component {
   constructor(props){
@@ -12,39 +7,46 @@ class DayMealsRecomm extends React.Component {
     this.state={
       label:"",
       url: "",
-      image: ""
-
+      image: "",
+      result: [],
     } 
-
   }
 componentDidMount(){
   Axios.post('/api/recipesearch').then(result=>{
     let label = result.data.hits[0].recipe.label
     let image = result.data.hits[0].recipe.image
     let url = result.data.hits[0].recipe.url
-    console.log()
+    console.log(result)
 
     this.setState({
       label,
       image,
-      url
+      url,
+      result: result.data.hits
     })
     console.log(result)
   })
 }
-  
-
-
   render(){
-    var content =[<div>hello</div>,<div>mike</div>]
+    var arr =this.state.result;
+    var display=[];
+    for(var i=0; i<arr.length;i++){
+      display.push(
+        <div>
+          <div className='recipe'>{arr[i].recipe.label}</div>
+          <img src={arr[i].recipe.image} alt="" className='recipe'/>
+          <a href={arr[i].recipe.url} target= '_blank' className='recipe'> View full recipe</a>
+        </div>
+      )
+    }
     return( 
       <>
-      <h2>{this.state.label}</h2>
-      <img src={this.state.image} alt=""/>
-      <a href={this.state.url}></a>
-      {content}
+        <div className='container'>
+        {display}
+        </div>
+      
+        
       </>
-
     )
   }
 }

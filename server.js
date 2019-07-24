@@ -51,18 +51,6 @@ app.get('/users', (req,res) => {
   
 })
 
-
-app.get('users/:id', (req,res) => {
-  User.findById(req.params.id).populate('meal').exec( (err, users) => {
-    if (err) {
-    res.json(err)
-    }
-    res.json(users)
-  })
-})
-
-
-
 app.post('/users', (req,res) => {
   User.create({
     name: req.body.name,
@@ -182,22 +170,21 @@ app.post('/user/:uid/goals', (req,res) => {
 
 app.post('/api/foodsearch',(req,res)=>{
   let foodApiUrl = `https://api.edamam.com/api/food-database/parser?ingr=peach&app_id=3ca2898f&app_key=cbab023867dfdece8499c75828decc2fs`
-  axios.get(foodApiUrl).then(function(foodData ){
+  axios.get(foodApiUrl).then(function(foodData) {
       res.json(foodData.data)
   }).catch(function(error){
       console.log(error);
   })
 })
 
-app.post('/api/nutritionsearch',(req,res)=>{
-  let nutritionApiUrl = `https://api.edamam.com/api/nutrition-data?app_id=78458070&app_key=7c11ba33bbbd07556c4b22240cd9d626&ingr=1%20large%20apple`
-  axios.get(nutritionApiUrl).then(function(nutritionData){
-      res.json(nutritionData.data)
+app.post('/api/recipesearch',(req,res)=>{
+  let recipeApiUrl = `https://api.edamam.com/search?q=chicken&app_id=30824d48&app_key=abe53731cba05bdc4a895e8aafc00067`
+  axios.get(recipeApiUrl).then(function(recipeData){
+      res.json(recipeData.data)
   }).catch(function(error){
       console.log(error);
   })
 })
-
   
 // app.use('/auth/login', loginLimiter);
 // app.use('/auth/signup', signupLimiter);
