@@ -6,7 +6,6 @@ const helmet = require('helmet');
 const RateLimit = require('express-rate-limit');
 const User = require('./models/user')
 const Meal = require('./models/meal');
-const methodoverride = require('method-override')
 
 
 const app = express();
@@ -31,7 +30,7 @@ const signupLimiter = new RateLimit({
 
 
 
-mongoose.connect('mongodb://localhost/nutri_facts-2', {useNewUrlParser: true});
+mongoose.connect('mongodb://localhost/jwtAuth', {useNewUrlParser: true});
 const db = mongoose.connection;
 db.once('open', () => {
   console.log(`Connected to Mongo on ${db.host}:${db.port}`);
