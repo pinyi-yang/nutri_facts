@@ -5,6 +5,7 @@ const expressJWT = require('express-jwt');
 const helmet = require('helmet');
 const RateLimit = require('express-rate-limit');
 const Meal = require('./models/meal');
+const axios = require('axios');
 
 
 const app = express();
@@ -39,7 +40,7 @@ db.on('error', (err) => {
 });
 
 
-mongoose.connect('mongodb://localhost/nutri_facts-2');
+// mongoose.connect('mongodb://localhost/nutri_facts-2');
 
 app.get('/meals', (req,res) => {
     Meal.find({}, function(err,meals){
@@ -55,10 +56,10 @@ app.get('meals/:id', (req,res) => {
         res.json(err)
     }
     res.json(meals)
- }
+}
 })
 
-
+//create a meal
 app.post('/meals', (req,res) => {
     Meal.create({
     food: req.body.food,
@@ -72,7 +73,7 @@ app.post('/meals', (req,res) => {
   })
 })
 
-
+//find a specific meal 
 app.put("/meals/:id", (req,res) => {
     Meal.findByIdAndUpdate(req.params.id, {
         food: req.body.food,
@@ -87,7 +88,7 @@ app.put("/meals/:id", (req,res) => {
     });
     });
 
-
+      //delete a specific meal
       app.delete("/meals/:id", (req,res) => {
         Meal.findByIdAndRemove(req.params.id, function(err){
             if (err) {
@@ -96,7 +97,16 @@ app.put("/meals/:id", (req,res) => {
             res.json({message: "Delete"})
         })
     })
-      
+
+    app.post('/api/recipesearch',(req,res)=>{
+      console.log('hitting the recipe search route')
+      let recipeApiUrl = `https://api.edamam.com/search?q=chicken&app_id=30824d48&app_key=abe53731cba05bdc4a895e8aafc00067`
+      axios.get(recipeApiUrl).then(function(recipeData){
+          res.json(recipeData.data)
+      }).catch(function(error){
+          console.log(error);
+      })
+  })
 
 
 
@@ -104,7 +114,7 @@ app.put("/meals/:id", (req,res) => {
 // app.use('/auth/signup', signupLimiter);
 
 app.use('/auth', require('./routes/auth'));
-app.use('/api', expressJWT({secret: process.env.JWT_SECRET}), require('./routes/api'));
+app.use('/api', require('./routes/api'));
 
 app.listen(process.env.PORT, () => {
   console.log('🖲🖲🖲 server connected to port ' + process.env.PORT || 3001);
