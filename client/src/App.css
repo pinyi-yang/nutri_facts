@@ -6,7 +6,10 @@
 .App {
   text-align: center;
 }
+.container{
+  display:flex;
 
+}
 .day-meals-container {
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
