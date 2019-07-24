@@ -8,4 +8,5 @@ const mealSchema = new mongoose.Schema({
     nutrition: {}
   });
 
-  module.exports = mongoose.model('Meal', mealSchema);
+module.exports = mongoose.model('Meal', mealSchema);
+
