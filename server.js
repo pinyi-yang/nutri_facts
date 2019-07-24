@@ -6,8 +6,9 @@ const helmet = require('helmet');
 const RateLimit = require('express-rate-limit');
 const User = require('./models/user')
 const Meal = require('./models/meal');
-// const User = require('./models/user');
+const axios = require('axios');
 const Goal = require('./models/goal')
+
 
 const app = express();
 
@@ -40,10 +41,7 @@ db.on('error', (err) => {
   console.log(`Database error:\n ${err}`);
 });
 
-
-
 // mongoose.connect('mongodb://localhost/nutri_facts-2');
-
 
 app.get('/users', (req,res) => {
   User.find({}, function(err,users){
@@ -52,18 +50,6 @@ app.get('/users', (req,res) => {
   })
   
 })
-
-
-app.get('users/:id', (req,res) => {
-  User.findById(req.params.id).populate('meal').exec( (err, users) => {
-    if (err) {
-    res.json(err)
-    }
-    res.json(users)
-  })
-})
-
-
 
 app.post('/users', (req,res) => {
   User.create({
@@ -127,7 +113,6 @@ app.get('/meals', (req,res) => {
     
 })
 
-
 app.post('/meals', (req,res) => {
     Meal.create({
     food: req.body.food,
@@ -140,8 +125,6 @@ app.post('/meals', (req,res) => {
         res.json(meals)
   })
 })
-
-
 
 app.put("/meals/:id", (req,res) => {
     Meal.findByIdAndUpdate(req.params.id, {
@@ -156,8 +139,6 @@ app.put("/meals/:id", (req,res) => {
         res.json(meals);
     });
   });
-
-    
 
 app.delete("/meals/:id", (req,res) => {
   Meal.findByIdAndRemove(req.params.id, function(err){
@@ -189,38 +170,27 @@ app.post('/user/:uid/goals', (req,res) => {
 
 app.post('/api/foodsearch',(req,res)=>{
   let foodApiUrl = `https://api.edamam.com/api/food-database/parser?ingr=peach&app_id=3ca2898f&app_key=cbab023867dfdece8499c75828decc2fs`
-  axios.get(foodApiUrl).then(function(foodData ){
+  axios.get(foodApiUrl).then(function(foodData) {
       res.json(foodData.data)
   }).catch(function(error){
       console.log(error);
   })
 })
 
-app.post('/api/nutritionsearch',(req,res)=>{
-  let nutritionApiUrl = `https://api.edamam.com/api/nutrition-data?app_id=78458070&app_key=7c11ba33bbbd07556c4b22240cd9d626&ingr=1%20large%20apple`
-  axios.get(nutritionApiUrl).then(function(nutritionData){
-      res.json(nutritionData.data)
+app.post('/api/recipesearch',(req,res)=>{
+  let recipeApiUrl = `https://api.edamam.com/search?q=chicken&app_id=30824d48&app_key=abe53731cba05bdc4a895e8aafc00067`
+  axios.get(recipeApiUrl).then(function(recipeData){
+      res.json(recipeData.data)
   }).catch(function(error){
       console.log(error);
   })
 })
-
-
-
-//     if (err) {
-//     res.json(err);
-//       }
-//     res.json({message: "Delete"})
-//     })
-// })
-
-
   
 // app.use('/auth/login', loginLimiter);
 // app.use('/auth/signup', signupLimiter);
 
 app.use('/auth', require('./routes/auth'));
-app.use('/api', expressJWT({secret: process.env.JWT_SECRET}), require('./routes/api'));
+app.use('/api', require('./routes/api'));
 
 app.listen(process.env.PORT, () => {
   console.log('🖲🖲🖲 server connected to port ' + process.env.PORT || 3001);

@@ -6,28 +6,31 @@
 .App {
   text-align: center;
 }
+.container{
+  display:flex;
 
+}
 .day-meals-container {
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
 }
 
 .App-header {
-  height: 18vh;
+  height: 16vh;
   text-align: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
 #header-img {
-  height: 16vh;
+  height: 14vh;
 }
 
 .main {
   position: fixed;
-  top: 18vh;
+  top: 16vh;
   min-width: 100vw;
-  height: 82vh;
+  height: 86vh;
   display: grid;
   grid-template-columns: 1fr 4fr;
 }
@@ -105,19 +108,18 @@ nav {
   justify-content: space-evenly;
 }
 
-.meals-options-list {
+.meals-options-list, .pending-meal-list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   height: 100%;
 }
 
-.meals-option {
+.meals-option, .pending-option {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
 
-/*Landing Page================================= */
 #landingPageMain * {
   border: none;
   text-align: center;
@@ -223,3 +225,4 @@ nav {
   background-color: ghostwhite;
   padding-bottom: 4em;
 }
+

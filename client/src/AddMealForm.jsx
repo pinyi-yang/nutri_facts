@@ -1,5 +1,6 @@
 import React from 'react';
 import MealOptions from './MealOptions';
+import axios from 'axios';
 
 
 class AddMealForm extends React.Component {
@@ -9,7 +10,11 @@ class AddMealForm extends React.Component {
       foods: '',
       dishes: '',
       type: '',
-      options: []
+      options: {
+        foods: [],
+        dishes: []
+      }
+
     }
     this.handleFormChange = this.handleFormChange.bind(this);
     this.handleShowMeal = this.handleShowMeal.bind(this);
@@ -28,16 +33,23 @@ class AddMealForm extends React.Component {
     let dishesArr;
     foods ? foodsArr = foods.split(/,\s*/) : foodsArr=[];
     dishes ? dishesArr = dishes.split(/,\s*/) : dishesArr=[];
-    
-    this.setState({
-      options: foodsArr.concat(dishesArr),
-      foods: '',
-      dishes: ''
+
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('mernToken');
+    axios.post('/api', {foodsArr, dishesArr}).then(res => {
+      console.log(res.data);
+      let option = res.data;
+      // option.type = this.state.type;
+      // console.log('meal type is', option.type);
+      this.setState({
+        options: {
+          foods: option,
+          dishes: []
+        },
+        foods: '',
+        dishes: ''
+      })
+      console.log('the food is', this.state.options.foods);
     })
-  }
-
-  handleMealOptionSelect(){
-
   }
 
   render() {
@@ -74,7 +86,10 @@ class AddMealForm extends React.Component {
         </div>
 
         <div className='meals-options-list-div'>
-          <MealOptions options={this.state.options} />
+          <MealOptions options={this.state.options.foods.concat(this.state.options.dishes)} 
+                        handleMealOptionSelect={this.props.handleMealOptionSelect}
+                        type={this.state.type}
+                        />
         </div>
       </div>
     );
