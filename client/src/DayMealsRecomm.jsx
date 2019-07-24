@@ -1,10 +1,6 @@
 import React from 'react';
 import Axios from 'axios';
 
-
-
-
-
 class DayMealsRecomm extends React.Component {
   constructor(props){
     super(props); 
