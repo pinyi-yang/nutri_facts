@@ -51,18 +51,6 @@ app.get('/users', (req,res) => {
   
 })
 
-
-app.get('users/:id', (req,res) => {
-  User.findById(req.params.id).populate('meal').exec( (err, users) => {
-    if (err) {
-    res.json(err)
-    }
-    res.json(users)
-  })
-})
-
-
-
 app.post('/users', (req,res) => {
   User.create({
     name: req.body.name,

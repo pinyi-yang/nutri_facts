@@ -5,6 +5,7 @@ const Meal = require('../models/meal');
 const axios = require('axios');
 const async = require('async');
 const User = require('../models/user');
+const moment = require('moment');
 
 router.post('/', (req, res) => {
   let {foodsArr, dishesArr} = req.body;
@@ -53,12 +54,16 @@ router.post('/', (req, res) => {
   })
 });
 
-router.get('/meals', (req,res) => {
-  Meal.find({}, function(err,meals){
-      if (err) res.json(err)
-      res.json(meals)
+router.get('/users/:id/meals', (req,res) => {
+  User.findById(req.params.id)
+  .populate({
+    path: 'meals',
+  }).exec( (err, users) => {
+    if (err) {
+    res.json(err)
+    }
+    res.json(users)
   })
-
 })
 
 router.get('meals/:id', (req,res) => {
@@ -76,8 +81,8 @@ router.post('/users/:uid/meals', (req,res) => {
   Meal.create({
     food: req.body.newmeal,
     dish: [],
-    type: req.body.newmeal[0].type,
-    date: new Date(),
+    type: req.body.type,
+    date: moment(),
     nutrition: {}
     }, (err, meal) => {
     User.findById(req.params.uid, (err, user) => {

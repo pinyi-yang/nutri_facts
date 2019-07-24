@@ -1,5 +1,6 @@
 import React from 'react';
 import '../node_modules/react-vis/dist/style.css';
+import moment from 'moment';
 import {XYPlot, 
         VerticalBarSeries,
         XAxis,
@@ -12,7 +13,10 @@ const DayMealsCharts = props => {
   const xticks = ['fiber', 'suger', 'fat', 'carbonhydrate', 'sodium', 'whatever']
   return (
     <div className='day-meals-chart'>
-      this will generate a chart about day meal nutriction by React Vis.
+      <form>
+        <input type='date' value={props.date}/> {' '}
+        <input type='submit' value='GO' />
+      </form>
       <XYPlot height={200} width={300} stackBy='y'>
         <DiscreteColorLegend 
           items={[
