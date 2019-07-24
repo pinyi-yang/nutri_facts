@@ -6,12 +6,11 @@ import Signup from './Signup';
 import Home from './Home';
 import LandingPage from './LandingPage'
 import Header from './Header';
+import Dates from './Dates';
 import Summary from './Summary';
 import {
   BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom';
+  Route} from 'react-router-dom';
 
 class App extends React.Component {
   constructor(props) {
@@ -119,6 +118,9 @@ class App extends React.Component {
         <Route exact path="/summary" render={(props) => (
           <Summary {...props} user={this.state.user} liftToken={this.liftToken} />
         )} />
+        <Route exact path="/dates" render={(props) => (
+          <Dates {...props} user={this.state.user} liftToken={this.LiftToken} />
+          )} />
       </Router>
     );
   }
