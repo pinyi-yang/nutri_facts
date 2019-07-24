@@ -7,7 +7,7 @@ const MealOptions = props => (
             key={i}
             style={{backgroundImage: "url(" + option.image + ")"}}>
         {option.name}
-        <button onClick={() => props.handleMealOptionSelect(option)}>Select</button>
+        <button onClick={() => props.handleMealOptionSelect(option, props.type)}>Select</button>
       </div>
     ))}
   </div>

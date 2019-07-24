@@ -6,6 +6,7 @@ import ProfileBar from './ProfileBar';
 import AddMealForm from './AddMealForm';
 import PendingMeal from './PendingMeal';
 import axios from 'axios';
+import moment from 'moment';
 import {
   BrowserRouter as Router,
   Route,
@@ -19,7 +20,9 @@ class Home extends React.Component {
     this.state = {
       meals: [],
       pendingMeal: [],
-      addMeal: false
+      addMeal: false,
+      date: moment().format('YYYY-MM-DD'),
+      type: ''
     }
   
     this.handleAddMealClick = this.handleAddMealClick.bind(this);
@@ -35,13 +38,14 @@ class Home extends React.Component {
   }
 
   //add options to pending meal
-  handleMealOptionSelect(option) {
+  handleMealOptionSelect(option, type) {
     console.log('add food to pending', option);
     let pendingMealCopy = this.state.pendingMeal.slice();
     pendingMealCopy.push(option);
     this.setState(
       {
-        pendingMeal: pendingMealCopy
+        pendingMeal: pendingMealCopy,
+        type
       }
     )  
   }
@@ -61,19 +65,27 @@ class Home extends React.Component {
   handEnjoyMealClick() {
     let newmeal = this.state.pendingMeal.slice();
     let mealscopy = this.state.meals.slice();
+    let type = this.state.type;
     mealscopy.push(newmeal);
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('mernToken');
-    axios.post(`/api/users/${this.props.user._id}/meals`, {newmeal}).then(res => {
+    axios.post(`/api/users/${this.props.user._id}/meals`, {newmeal, type}).then(res => {
       console.log('added new meal');
       this.setState({
         meals: mealscopy,
         pendingMeal: [],
-        addMeal: false
+        addMeal: false,
+        type: ''
       })
     })
   }
 
-
+  componentDidMount() {
+    console.log('get meal from user');
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('mernToken');
+    axios.get(`/api/users/${this.props.user._id}/meals?date=${this.state.date}`).then(res => {
+      console.log(res.data);
+    })
+  }
 
   render() {
     const goals = [
@@ -106,7 +118,7 @@ class Home extends React.Component {
     } else {
       infosub = (
         <>
-          <DayMealsRecomm />
+          {/* <DayMealsRecomm /> */}
           <DayMealsHistory />
         </>
       )
@@ -122,7 +134,7 @@ class Home extends React.Component {
 
 
         <div className='info day-meals-container'>
-          <DayMealsCharts goals={goals} meals={meals}/>
+          <DayMealsCharts goals={goals} meals={meals} date={this.state.date}/>
           {infosub}
         </div>
       </div>

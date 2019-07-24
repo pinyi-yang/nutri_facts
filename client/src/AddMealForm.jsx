@@ -38,7 +38,8 @@ class AddMealForm extends React.Component {
     axios.post('/api', {foodsArr, dishesArr}).then(res => {
       console.log(res.data);
       let option = res.data;
-      option.type = this.state.type;
+      // option.type = this.state.type;
+      // console.log('meal type is', option.type);
       this.setState({
         options: {
           foods: option,
@@ -47,6 +48,7 @@ class AddMealForm extends React.Component {
         foods: '',
         dishes: ''
       })
+      console.log('the food is', this.state.options.foods);
     })
   }
 
@@ -85,7 +87,9 @@ class AddMealForm extends React.Component {
 
         <div className='meals-options-list-div'>
           <MealOptions options={this.state.options.foods.concat(this.state.options.dishes)} 
-                        handleMealOptionSelect={this.props.handleMealOptionSelect}/>
+                        handleMealOptionSelect={this.props.handleMealOptionSelect}
+                        type={this.state.type}
+                        />
         </div>
       </div>
     );
