@@ -6,6 +6,7 @@ import Signup from './Signup';
 import Home from './Home';
 import LandingPage from './LandingPage'
 import Header from './Header';
+import Summary from './Summary';
 import {
   BrowserRouter as Router,
   Route,
@@ -99,32 +100,21 @@ class App extends React.Component {
         />
       )
     }
-    //     <>
-    //       {/* <p>Hello, {user.name}</p>
-    //       <p onClick={this.logout}>Logout</p> */}
-    //       <Home />
-    //     </>
-    //   );
-    // } else {
-    //   //if no user
-    //   contents = (
-    //     <>
-    //       <p>Please login</p>
-    //       <Login liftToken = {this.liftToken} />
-    //       <p>or signup</p>
-    //       <Signup liftToken = {this.liftToken} />
-    //     </>
-    //   );
-    // }
+
     return (
       <Router>
-        <Header logout={this.logout}/>
+        <Header logout={this.logout} user={user}/>
 
         {contents}
         {/* <Route exact path="/" component={Home} /> */}
         <Route exact path="/login" render={(props) => (
           <Login {...props} liftToken={this.liftToken}/>
-        
+        )} />
+        <Route exact path="/signup" render={(props) => (
+          <Signup {...props} liftToken={this.liftToken}/>
+        )} />
+        <Route exact path="/summary" render={(props) => (
+          <Summary {...props} user={this.state.user} liftToken={this.liftToken} />
         )} />
       </Router>
     );
