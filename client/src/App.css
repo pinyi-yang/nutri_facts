@@ -109,14 +109,16 @@ nav {
   justify-content: space-evenly;
 }
 
-.meals-options-list {
+.meals-options-list, .pending-meal-list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   height: 100%;
 }
 
-.meals-option {
+.meals-option, .pending-option {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

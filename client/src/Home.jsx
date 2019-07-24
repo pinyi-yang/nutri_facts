@@ -18,15 +18,13 @@ class Home extends React.Component {
     super(props);
     this.state = {
       meals: [],
-      pendingMeal: {
-        type: '',
-        foods: '',
-        dishes: ''
-      },
+      pendingMeal: [],
       addMeal: false
     }
     this.handNewMealSubmit = this.handNewMealSubmit.bind(this);
     this.handleAddMealClick = this.handleAddMealClick.bind(this);
+    this.handleMealOptionSelect = this.handleMealOptionSelect.bind(this);
+    this.handlePendingOptionRemove = this.handlePendingOptionRemove.bind(this);
   }
 
   handleAddMealClick() {
@@ -36,8 +34,27 @@ class Home extends React.Component {
   }
 
   //add options to pending meal
-  handleMealOptionSelect() {
+  handleMealOptionSelect(option) {
+    console.log('add food to pending', option);
+    let pendingMealCopy = this.state.pendingMeal.slice();
+    pendingMealCopy.push(option);
+    this.setState(
+      {
+        pendingMeal: pendingMealCopy
+      }
+    )  
+  }
 
+  //remove option from pendingMeal
+  handlePendingOptionRemove(e) {
+    let index = parseInt(e.target.value);
+    let pendingMealCopy = this.state.pendingMeal.slice();
+    pendingMealCopy.splice(index, 1);
+    this.setState(
+      {
+        pendingMeal: pendingMealCopy
+      }
+    ) 
   }
 
   handNewMealSubmit(e, foods, dishes, type) {
@@ -72,8 +89,8 @@ class Home extends React.Component {
     if (this.state.addMeal) {
       var infosub = (
         <>
-          <AddMealForm />
-          <PendingMeal />
+          <AddMealForm handleMealOptionSelect={this.handleMealOptionSelect}/>
+          <PendingMeal pendingMeal={this.state.pendingMeal} handlePendingOptionRemove={this.handlePendingOptionRemove}/>
         </>
       )
     } else {
@@ -93,12 +110,11 @@ class Home extends React.Component {
                   handleAddMealClick={this.handleAddMealClick}
                   />
 
-        <Router>
-          <div className='info day-meals-container'>
-            <DayMealsCharts goals={goals} meals={meals}/>
-            {infosub}
-          </div>
-        </Router>
+
+        <div className='info day-meals-container'>
+          <DayMealsCharts goals={goals} meals={meals}/>
+          {infosub}
+        </div>
       </div>
     );
   }

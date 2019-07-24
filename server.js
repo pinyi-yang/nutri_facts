@@ -182,7 +182,7 @@ app.post('/user/:uid/goals', (req,res) => {
 
 app.post('/api/foodsearch',(req,res)=>{
   let foodApiUrl = `https://api.edamam.com/api/food-database/parser?ingr=peach&app_id=3ca2898f&app_key=cbab023867dfdece8499c75828decc2fs`
-  axios.get(foodApiUrl).then(function(foodData ){
+  axios.get(foodApiUrl).then(function(foodData) {
       res.json(foodData.data)
   }).catch(function(error){
       console.log(error);
