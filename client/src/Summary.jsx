@@ -1,11 +1,13 @@
 import React from 'react';
 import axios from 'axios';
+import ProfileBar from './ProfileBar';
 import {
   BrowserRouter as Router,
   Route,
   Link,
   Switch
 } from 'react-router-dom';
+import { deflateRawSync } from 'zlib';
 
 class Summary extends React.Component {
   constructor(props) {
@@ -48,8 +50,14 @@ class Summary extends React.Component {
   render() {
     var name = this.props.user ? this.props.user.name : '';
     return (
+      <div className='main'>
+
+      <ProfileBar 
+                user={name}
+                handNewMealSubmit={this.handNewMealSubmit}
+                handleAddMealClick={this.handleAddMealClick}
+                />
       <div className="summaryPage">
-        Summary Page
         <p>Hello, {name}</p>
         <h3>Set a Goal:</h3>
         <form onSubmit={this.handleSubmit}>
@@ -59,8 +67,10 @@ class Summary extends React.Component {
           <input onChange={this.handleInputChange} type="text" name="fiber" placeholder="Enter fiber..."/>
           <input type="submit"/>
         </form>
+        </div>
         <Link to='/'>Home</Link>
-        <p>{this.state.calories},{this.state.fat},{this.state.protein},{this.state.fiber}</p>
+        <Link to='/dates'>Set Date</Link>
+        <p>Calories: {this.state.calories} Fat: {this.state.fat} Protein: {this.state.protein} Fiber: {this.state.fiber}</p>
       </div>
     )
   }
