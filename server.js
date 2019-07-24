@@ -4,9 +4,11 @@ const mongoose = require('mongoose');
 const expressJWT = require('express-jwt');
 const helmet = require('helmet');
 const RateLimit = require('express-rate-limit');
-const User = require('./models/user');
+const User = require('./models/user')
 const Meal = require('./models/meal');
-const Goal = require('./models/goal');
+const axios = require('axios');
+const Goal = require('./models/goal')
+
 
 const app = express();
 
@@ -39,10 +41,7 @@ db.on('error', (err) => {
   console.log(`Database error:\n ${err}`);
 });
 
-
-
 // mongoose.connect('mongodb://localhost/nutri_facts-2');
-
 
 app.get('/users', (req,res) => {
   User.find({}, function(err,users){
@@ -126,7 +125,6 @@ app.get('/meals', (req,res) => {
     
 })
 
-
 app.post('/meals', (req,res) => {
     Meal.create({
     food: req.body.food,
@@ -139,8 +137,6 @@ app.post('/meals', (req,res) => {
         res.json(meals)
   })
 })
-
-
 
 app.put("/meals/:id", (req,res) => {
     Meal.findByIdAndUpdate(req.params.id, {
@@ -155,8 +151,6 @@ app.put("/meals/:id", (req,res) => {
         res.json(meals);
     });
   });
-
-    
 
 app.delete("/meals/:id", (req,res) => {
   Meal.findByIdAndRemove(req.params.id, function(err){
@@ -209,7 +203,7 @@ app.post('/api/nutritionsearch',(req,res)=>{
 // app.use('/auth/signup', signupLimiter);
 
 app.use('/auth', require('./routes/auth'));
-app.use('/api', expressJWT({secret: process.env.JWT_SECRET}), require('./routes/api'));
+app.use('/api', require('./routes/api'));
 
 app.listen(process.env.PORT, () => {
   console.log('🖲🖲🖲 server connected to port ' + process.env.PORT || 3001);
