@@ -4,8 +4,9 @@ const mongoose = require('mongoose');
 const expressJWT = require('express-jwt');
 const helmet = require('helmet');
 const RateLimit = require('express-rate-limit');
-const User = require('./models/user')
+const User = require('./models/user');
 const Meal = require('./models/meal');
+const Goal = require('./models/goal');
 const methodoverride = require('method-override')
 
 
@@ -41,6 +42,26 @@ db.on('error', (err) => {
 });
 
 
+app.get('/goals', (req,res) => {
+  Goal.find({}, function(err,goals){
+      if (err) res.json(err)
+      res.json(goals)
+  })
+  
+})
+
+
+
+/*app.post('/users/:uid/goals', (req,res) => {
+    User.findById(req.params.uid).populate('goal').exec( (err, user) => {
+      var {calories, fat, protein, fiber} = req.body
+      user.goals = req.body
+      user.save();
+      res.json(user);
+      }
+    )*/
+
+
 
 app.get('/users', (req,res) => {
   User.find({}, function(err,users){
@@ -51,8 +72,8 @@ app.get('/users', (req,res) => {
 })
 
 
-app.get('users/:id', (req,res) => {
-  User.findById(req.params.id).populate('meal').exec( (err, users) => {
+app.get('/users/:id', (req,res) => {
+  User.findById(req.params.id).populate('meals').exec( (err, users) => {
     if (err) {
     res.json(err)
     }
@@ -166,7 +187,8 @@ app.delete("/meals/:id", (req,res) => {
     })
 })
 
-  
+
+
 // app.use('/auth/login', loginLimiter);
 // app.use('/auth/signup', signupLimiter);
 
