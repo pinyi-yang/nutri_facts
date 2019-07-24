@@ -4,10 +4,9 @@ const mongoose = require('mongoose');
 const expressJWT = require('express-jwt');
 const helmet = require('helmet');
 const RateLimit = require('express-rate-limit');
-const User = require('./models/user')
-const Meal = require('./models/meal');
 const User = require('./models/user');
-const Goal = require('./models/goal')
+const Meal = require('./models/meal');
+const Goal = require('./models/goal');
 
 const app = express();
 
@@ -204,16 +203,6 @@ app.post('/api/nutritionsearch',(req,res)=>{
       console.log(error);
   })
 })
-
-
-
-    if (err) {
-    res.json(err);
-      }
-    res.json({message: "Delete"})
-    })
-})
-
 
   
 // app.use('/auth/login', loginLimiter);
