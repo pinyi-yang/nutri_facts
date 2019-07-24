@@ -3,6 +3,7 @@ const router = express.Router();
 const Meal = require('../models/meal');
 const axios = require('axios');
 const async = require('async');
+const User = require('../models/user');
 
 router.post('/', (req, res) => {
   let {foodsArr, dishesArr} = req.body;
@@ -70,13 +71,13 @@ router.get('meals/:id', (req,res) => {
 
 
 router.post('/users/:uid/meals', (req,res) => {
-
+  console.log('get to back end to add meal');
   Meal.create({
-    food: req.body.food,
-    dish: req.body.dish,
-    type: req.body.type,
-    date: req.body.date,
-    nutrition: req.body.nutrition 
+    food: req.body.newmeal,
+    dish: [],
+    type: req.body.newmeal[0].type,
+    date: new Date(),
+    nutrition: {}
     }, (err, meal) => {
     User.findById(req.params.uid, (err, user) => {
       user.meals.push(meal._id);

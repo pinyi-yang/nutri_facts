@@ -13,21 +13,21 @@
 }
 
 .App-header {
-  height: 18vh;
+  height: 16vh;
   text-align: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
 #header-img {
-  height: 16vh;
+  height: 14vh;
 }
 
 .main {
   position: fixed;
-  top: 18vh;
+  top: 16vh;
   min-width: 100vw;
-  height: 82vh;
+  height: 86vh;
   display: grid;
   grid-template-columns: 1fr 4fr;
 }

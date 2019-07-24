@@ -21,10 +21,11 @@ class Home extends React.Component {
       pendingMeal: [],
       addMeal: false
     }
-    this.handNewMealSubmit = this.handNewMealSubmit.bind(this);
+  
     this.handleAddMealClick = this.handleAddMealClick.bind(this);
     this.handleMealOptionSelect = this.handleMealOptionSelect.bind(this);
     this.handlePendingOptionRemove = this.handlePendingOptionRemove.bind(this);
+    this.handEnjoyMealClick = this.handEnjoyMealClick.bind(this);
   }
 
   handleAddMealClick() {
@@ -57,13 +58,19 @@ class Home extends React.Component {
     ) 
   }
 
-  handNewMealSubmit(e, foods, dishes, type) {
-    e.preventDefault();
-    let foodsarr = foods.split(/,\s*/);
-    let dishesarr = dishes.split(/,\s*/);
-    console.log(foodsarr, dishesarr, type);
+  handEnjoyMealClick() {
+    let newmeal = this.state.pendingMeal.slice();
+    let mealscopy = this.state.meals.slice();
+    mealscopy.push(newmeal);
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('mernToken');
-    axios.post(`/api/users/${this.props.user._id}/meals`, {foodsarr, dishesarr, type})
+    axios.post(`/api/users/${this.props.user._id}/meals`, {newmeal}).then(res => {
+      console.log('added new meal');
+      this.setState({
+        meals: mealscopy,
+        pendingMeal: [],
+        addMeal: false
+      })
+    })
   }
 
 
@@ -90,7 +97,10 @@ class Home extends React.Component {
       var infosub = (
         <>
           <AddMealForm handleMealOptionSelect={this.handleMealOptionSelect}/>
-          <PendingMeal pendingMeal={this.state.pendingMeal} handlePendingOptionRemove={this.handlePendingOptionRemove}/>
+          <PendingMeal 
+            pendingMeal={this.state.pendingMeal} handlePendingOptionRemove={this.handlePendingOptionRemove}
+            handEnjoyMealClick={this.handEnjoyMealClick}
+          />
         </>
       )
     } else {
