@@ -18,15 +18,14 @@ class Home extends React.Component {
     super(props);
     this.state = {
       meals: [],
-      pendingMeal: {
-        type: '',
-        foods: '',
-        dishes: ''
-      },
+      pendingMeal: [],
       addMeal: false
     }
-    this.handNewMealSubmit = this.handNewMealSubmit.bind(this);
+  
     this.handleAddMealClick = this.handleAddMealClick.bind(this);
+    this.handleMealOptionSelect = this.handleMealOptionSelect.bind(this);
+    this.handlePendingOptionRemove = this.handlePendingOptionRemove.bind(this);
+    this.handEnjoyMealClick = this.handEnjoyMealClick.bind(this);
   }
 
   handleAddMealClick() {
@@ -36,17 +35,42 @@ class Home extends React.Component {
   }
 
   //add options to pending meal
-  handleMealOptionSelect() {
-
+  handleMealOptionSelect(option) {
+    console.log('add food to pending', option);
+    let pendingMealCopy = this.state.pendingMeal.slice();
+    pendingMealCopy.push(option);
+    this.setState(
+      {
+        pendingMeal: pendingMealCopy
+      }
+    )  
   }
 
-  handNewMealSubmit(e, foods, dishes, type) {
-    e.preventDefault();
-    let foodsarr = foods.split(/,\s*/);
-    let dishesarr = dishes.split(/,\s*/);
-    console.log(foodsarr, dishesarr, type);
+  //remove option from pendingMeal
+  handlePendingOptionRemove(e) {
+    let index = parseInt(e.target.value);
+    let pendingMealCopy = this.state.pendingMeal.slice();
+    pendingMealCopy.splice(index, 1);
+    this.setState(
+      {
+        pendingMeal: pendingMealCopy
+      }
+    ) 
+  }
+
+  handEnjoyMealClick() {
+    let newmeal = this.state.pendingMeal.slice();
+    let mealscopy = this.state.meals.slice();
+    mealscopy.push(newmeal);
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('mernToken');
-    axios.post(`/api/users/${this.props.user._id}/meals`, {foodsarr, dishesarr, type})
+    axios.post(`/api/users/${this.props.user._id}/meals`, {newmeal}).then(res => {
+      console.log('added new meal');
+      this.setState({
+        meals: mealscopy,
+        pendingMeal: [],
+        addMeal: false
+      })
+    })
   }
 
 
@@ -72,8 +96,11 @@ class Home extends React.Component {
     if (this.state.addMeal) {
       var infosub = (
         <>
-          <AddMealForm />
-          <PendingMeal />
+          <AddMealForm handleMealOptionSelect={this.handleMealOptionSelect}/>
+          <PendingMeal 
+            pendingMeal={this.state.pendingMeal} handlePendingOptionRemove={this.handlePendingOptionRemove}
+            handEnjoyMealClick={this.handEnjoyMealClick}
+          />
         </>
       )
     } else {
@@ -93,12 +120,11 @@ class Home extends React.Component {
                   handleAddMealClick={this.handleAddMealClick}
                   />
 
-        <Router>
-          <div className='info day-meals-container'>
-            <DayMealsCharts goals={goals} meals={meals}/>
-            {infosub}
-          </div>
-        </Router>
+
+        <div className='info day-meals-container'>
+          <DayMealsCharts goals={goals} meals={meals}/>
+          {infosub}
+        </div>
       </div>
     );
   }

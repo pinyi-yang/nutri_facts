@@ -3,9 +3,11 @@ import React from 'react';
 const MealOptions = props => (
   <div className='meals-options-list'>
     {props.options.map((option, i) => (
-      <div className='meals-option' key={i}>
-        {option}
-        <button>Select</button>
+      <div className='meals-option' 
+            key={i}
+            style={{backgroundImage: "url(" + option.image + ")"}}>
+        {option.name}
+        <button onClick={() => props.handleMealOptionSelect(option)}>Select</button>
       </div>
     ))}
   </div>
