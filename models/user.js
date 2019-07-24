@@ -22,6 +22,7 @@ const userSchema = new mongoose.Schema({
   },
   goals: [{type: mongoose.Schema.Types.ObjectId, ref: 'Goal'}],
   meals: [{type: mongoose.Schema.Types.ObjectId, ref: 'Meal'}]
+
 });
 
 userSchema.set('toObject', {
