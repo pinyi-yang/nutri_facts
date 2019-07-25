@@ -46,7 +46,6 @@
 
 .rv-xy-plot {
   text-align: center;
-  padding-left: 35em;
 }
 
 .profileBar {
@@ -112,13 +111,17 @@ nav {
   justify-content: space-evenly;
 }
 
+.meals-options-list-div,{
+  height: 100%;
+}
 .meals-options-list, .pending-meal-list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  height: 100%;
+
 }
 
-.meals-options-container {
+.meals-options-container, .pending-meal-container {
+  height: 100%;
   display: grid;
   grid-template-columns: 4fr 1fr;
 }
@@ -127,6 +130,16 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.message-div {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .dates form {
