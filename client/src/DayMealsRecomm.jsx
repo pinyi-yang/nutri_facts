@@ -52,6 +52,4 @@ componentDidMount(){
 }
 
 
-
-
 export default DayMealsRecomm;
