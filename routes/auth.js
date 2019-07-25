@@ -71,7 +71,7 @@ router.post('/me/from/token', (req, res) => {
     // if token, verify it
     jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
       // if token, invalid, return an error
-      if (err) jes.json({type: 'error', message: 'Invalid token. Please login again.'})
+      if (err) res.json({type: 'error', message: 'Invalid token. Please login again.'})
       // if token is valid, look up user in the db
       User.findById(user._id, (err, user) => {
         if (err) {
