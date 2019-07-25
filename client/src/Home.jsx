@@ -82,7 +82,7 @@ class Home extends React.Component {
   componentDidMount() {
     console.log('get meal from user');
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('mernToken');
-    axios.get(`/api/users/${this.props.user._id}/meals?date=${this.state.date}`).then(res => {
+    axios.get(`/api/users/${this.props.user._id}/meals?start=${this.state.date}&end=${this.state.date}`).then(res => {
       console.log(res.data);
     })
   }

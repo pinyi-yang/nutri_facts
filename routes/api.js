@@ -54,15 +54,21 @@ router.post('/', (req, res) => {
   })
 });
 
+//get meals?start=&end=   date format 'YYYY-MM-DD'
 router.get('/users/:id/meals', (req,res) => {
+  let startDate = moment(req.query.start, 'YYYY-MM-DD').startOf('day');
+  let endDate = moment(req.query.end, 'YYYY-MM-DD').endOf('day');
+  console.log(startDate, endDate);
   User.findById(req.params.id)
   .populate({
     path: 'meals',
-  }).exec( (err, users) => {
+    match: {date: {$gt: startDate,$lt: endDate}}
+  }).exec( (err, user) => {
     if (err) {
     res.json(err)
     }
-    res.json(users)
+    //!!! don't pass user out here. password will be included
+    res.json(user.meals);
   })
 })
 
