@@ -33,7 +33,7 @@
   position: fixed;
   top: 16vh;
   min-width: 100vw;
-  height: 86vh;
+  height: 84vh;
   display: grid;
   grid-template-columns: 1fr 4fr;
 }
@@ -48,8 +48,9 @@
   padding-left: 35em;
 }
 
-/* .profileBar {
-} */
+.profileBar {
+  background-color: lightblue;
+} 
 
 .sidebar, a {
   display: block;
@@ -100,7 +101,7 @@ nav {
   right: 10px;
 }
 
-/* * here is for AddMealForm.jsx */
+/* * here is for AddMealForm.jsx ========================================*/
 #add-meal-container {
   display: grid;
   grid-template-rows: 1fr 5fr;
@@ -116,8 +117,15 @@ nav {
 .meals-options-list, .pending-meal-list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  height:30
+  vh;
   
   
+}
+
+.meals-options-container {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
 }
 
 .meals-option, .pending-option {
@@ -125,6 +133,7 @@ nav {
   flex-direction: column;
   justify-content: space-around;
   background-image: contain;
+
   
   
 }
@@ -290,7 +299,6 @@ padding-left: 20%;
 /* .dev:hover {
   transform: rotateY(180deg);
 }
-
 .dev-card-back {
   background-color: #2980b9;
   color: white;

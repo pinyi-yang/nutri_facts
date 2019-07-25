@@ -53,20 +53,30 @@ class AddMealForm extends React.Component {
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('mernToken');
     
     if (foods) {
-      axios.post('/api', {foodsArr, dishesArr}).then(res => {
-        console.log(res.data);
+      axios.post('/api/foodsearch', {foodsArr}).then(res => {
+        console.log('get dat from api');
         let option = res.data;
         // option.type = this.state.type;
         // console.log('meal type is', option.type);
         this.setState({
           options: option,
           foods: '',
-          dishes: ''
+          dishes: '',
+          message: ''
         })
         console.log('the food is', this.state.options);
       })
     } else if (dishes) {
-
+      console.log('look for dish in backend', dishesArr[0]);
+      axios.post('/api/dishsearch',{dishesArr}).then(res => {
+        console.log('get dish from api');
+        this.setState({
+          options: res.data,
+          foods: '',
+          dishes: '',
+          message: ''
+        })
+      })
     } else {
       this.setState({
         message: 'Please input a food or dish'
@@ -109,8 +119,8 @@ class AddMealForm extends React.Component {
           </form>
         </div>
         <div className='meals-options-list-div'>
-          {this.state.options.length === 0 ? 
-            <img src='../public/gif/loading.gif' alt={this.state.message} id='loadinggif'/> : 
+          {this.state.message === 'Loading Data' ? 
+            <img src='./gif/loading.gif' alt={this.state.message} id='loadinggif'/> : 
             <MealOptions options={this.state.options} 
                           handleMealOptionSelect={this.props.handleMealOptionSelect}
                           type={this.state.type}
