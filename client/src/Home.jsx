@@ -7,22 +7,18 @@ import AddMealForm from './AddMealForm';
 import PendingMeal from './PendingMeal';
 import axios from 'axios';
 import moment from 'moment';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom';
-
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       meals: [],
+      goal: null,
       pendingMeal: [],
       addMeal: false,
       date: moment().format('YYYY-MM-DD'),
-      type: ''
+      type: '',
+      message: ''
     }
   
     this.handleAddMealClick = this.handleAddMealClick.bind(this);
@@ -82,27 +78,43 @@ class Home extends React.Component {
   componentDidMount() {
     console.log('get meal from user');
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('mernToken');
-    axios.get(`/api/users/${this.props.user._id}/meals?date=${this.state.date}`).then(res => {
-      console.log(res.data);
+    axios.get(`/api/users/${this.props.user._id}/meals?start=${this.state.date}&end=${this.state.date}`).then(res => {
+      let {messageType, meals, goals} = res.data;
+      if (messageType === 'success') {
+        this.setState({
+          meals,
+          goal: goals[goals.length-1]
+        })
+
+      } else {
+        console.log('error, could not get meals and goal info from user');
+        this.setState({
+          message: 'error, could not get meals and goal info from user'
+        })
+      }
+      
     })
   }
 
   render() {
-    const goals = [
-      {x: 1, y: 8},
-      {x: 2, y: 5},
-      {x: 3, y: 4},
-      {x: 4, y: 9},
-      {x: 5, y: 1},
-      {x: 6, y: 0}
-    ];
-    const meals = [
-      {x: 1, y: 4},
-      {x: 2, y: 3},
-      {x: 3, y: 2},
-      {x: 4, y: 6},
-      {x: 5, y: 0.5}
-    ]
+   
+    //      //  ['100kcal', 'Protain', 'Fiber', 'Carbs', 'Fat']
+    // let goal = this.state.goal;
+    // let meals = this.state.meals
+    // var goalData = [
+    //   {x: 1, y: goal.calories},
+    //   {x: 2, y: goal.protein},
+    //   {x: 3, y: goal.fiber},
+    //   {x: 4, y: 12},
+    //   {x: 5, y: goal.fat}
+    // ];
+    // var mealsData = [
+    //   {x: 1, y: 0},
+    //   {x: 2, y: 0},
+    //   {x: 3, y: 0},
+    //   {x: 4, y: 0},
+    //   {x: 5, y: 0}
+    // ]
 
 
     if (this.state.addMeal) {
@@ -134,7 +146,7 @@ class Home extends React.Component {
 
 
         <div className='info day-meals-container'>
-          <DayMealsCharts goals={goals} meals={meals} date={this.state.date}/>
+          <DayMealsCharts goal={this.state.goal} meals={this.state.meals} date={this.state.date}/>
           {infosub}
         </div>
       </div>
