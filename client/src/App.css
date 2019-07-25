@@ -97,7 +97,7 @@ nav {
   right: 10px;
 }
 
-/* * here is for AddMealForm.jsx */
+/* * here is for AddMealForm.jsx ========================================*/
 #add-meal-container {
   display: grid;
   grid-template-rows: 1fr 5fr;
@@ -112,6 +112,11 @@ nav {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   height: 100%;
+}
+
+.meals-options-container {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
 }
 
 .meals-option, .pending-option {
