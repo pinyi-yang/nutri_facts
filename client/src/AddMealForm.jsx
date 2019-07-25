@@ -10,19 +10,31 @@ class AddMealForm extends React.Component {
       foods: '',
       dishes: '',
       type: '',
-      options: {
-        foods: [],
-        dishes: []
-      }
-
+      options: []
     }
-    this.handleFormChange = this.handleFormChange.bind(this);
+    this.handleTypeChange = this.handleTypeChange.bind(this);
+    this.handleDishesChange = this.handleDishesChange.bind(this);
+    this.handleFoodsChange = this.handleFoodsChange.bind(this);
     this.handleShowMeal = this.handleShowMeal.bind(this);
   }
 
-  handleFormChange(e) {
+  handleTypeChange(e) {
     this.setState({
-      [e.target.name]: e.target.value
+      type: e.target.value
+    })
+  }
+
+  handleFoodsChange(e) {
+    this.setState({
+      foods: e.target.value,
+      dishes: ''
+    })
+  }
+
+  handleDishesChange(e) {
+    this.setState({
+      foods: '',
+      dishes: e.target.value
     })
   }
 
@@ -35,20 +47,18 @@ class AddMealForm extends React.Component {
     dishes ? dishesArr = dishes.split(/,\s*/) : dishesArr=[];
 
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('mernToken');
+    
     axios.post('/api', {foodsArr, dishesArr}).then(res => {
       console.log(res.data);
       let option = res.data;
       // option.type = this.state.type;
       // console.log('meal type is', option.type);
       this.setState({
-        options: {
-          foods: option,
-          dishes: []
-        },
+        options: option,
         foods: '',
         dishes: ''
       })
-      console.log('the food is', this.state.options.foods);
+      console.log('the food is', this.state.options);
     })
   }
 
@@ -59,7 +69,7 @@ class AddMealForm extends React.Component {
           <form onSubmit={this.handleShowMeal}>
             <div>
               Type: 
-              <select name='type' onChange={this.handleFormChange}>
+              <select name='type' onChange={this.handleTypeChange}>
                 <option value=''>--</option>
                 <option value='breakfast'>Breakfast</option>
                 <option value='lunch'>Lunch</option>
@@ -71,14 +81,14 @@ class AddMealForm extends React.Component {
 
             <div>
               Add Foods:
-              <input type='text' name='foods' value={this.state.foods} onChange={this.handleFormChange} placeholder='names for food'/>
+              <input type='text' name='foods' value={this.state.foods} onChange={this.handleFoodsChange} placeholder='names for food'/>
               {' '}
               <input type='submit' value='SHOW' />
             </div>
 
             <div>
               Add a Dish:
-              <input type='text' name='dish' value={this.state.dishes} onChange={this.handleFormChange} placeholder='name for dish' />
+              <input type='text' name='dish' value={this.state.dishes} onChange={this.handleDishesChange} placeholder='name for dish' />
               {' '}
               <input type='submit' value='SHOW' />
             </div>
@@ -86,7 +96,7 @@ class AddMealForm extends React.Component {
         </div>
 
         <div className='meals-options-list-div'>
-          <MealOptions options={this.state.options.foods.concat(this.state.options.dishes)} 
+          <MealOptions options={this.state.options} 
                         handleMealOptionSelect={this.props.handleMealOptionSelect}
                         type={this.state.type}
                         />
