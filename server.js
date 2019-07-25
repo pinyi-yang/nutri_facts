@@ -177,15 +177,14 @@ app.post('/api/foodsearch',(req,res)=>{
   })
 })
 
-app.post('/api/nutritionsearch',(req,res)=>{
-  let nutritionApiUrl = `https://api.edamam.com/api/nutrition-data?app_id=78458070&app_key=7c11ba33bbbd07556c4b22240cd9d626&ingr=1%20large%20apple`
-  axios.get(nutritionApiUrl).then(function(nutritionData){
-      res.json(nutritionData.data)
+app.post('/api/recipesearch',(req,res)=>{
+  let recipeApiUrl = `https://api.edamam.com/search?q=chicken&app_id=30824d48&app_key=abe53731cba05bdc4a895e8aafc00067`
+  axios.get(recipeApiUrl).then(function(recipeData){
+      res.json(recipeData.data)
   }).catch(function(error){
       console.log(error);
   })
 })
-
   
 // app.use('/auth/login', loginLimiter);
 // app.use('/auth/signup', signupLimiter);

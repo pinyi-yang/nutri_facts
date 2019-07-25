@@ -46,6 +46,7 @@ const DayMealsCharts = props => {
      console.log(meals);
      console.log(mealsData);
    }
+        
   return (
     <div className='day-meals-chart'>
       <form>
