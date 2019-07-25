@@ -105,6 +105,7 @@ class Summary extends React.Component {
       <div className="summaryPage">
         <p>Hello, {name}</p>
         <h3>Set a Goal:</h3>
+        <p>Calories: {this.state.calories} Fat: {this.state.fat} Protein: {this.state.protein} Fiber: {this.state.fiber}</p>
         <form onSubmit={this.handleSubmit}>
           <input onChange={this.handleInputChange} value={this.state.calories} type="text" name="calories" placeholder="Enter calories..."/>
           <input onChange={this.handleInputChange} value={this.state.fat} type="text" name="fat" placeholder="Enter fat..."/>
@@ -121,7 +122,11 @@ class Summary extends React.Component {
           <p>Carbs: {this.state.carbs}g</p>
         </div>
         </div>
-        <Link to='/dates'>Set Date</Link>
+
+        <nav>
+          <Link to='/'>Home</Link> 
+          <Link to='/dates'>Set Date</Link>
+        </nav>
       </div>
     )
   }

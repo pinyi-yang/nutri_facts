@@ -41,6 +41,7 @@ class AddMealForm extends React.Component {
 
   handleShowMeal(e) {
     e.preventDefault();
+    console.log('get meals from api');
     this.setState({
       message: 'Loading Data'
     })
