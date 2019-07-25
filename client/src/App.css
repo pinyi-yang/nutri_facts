@@ -164,6 +164,7 @@ margin: 20px;
 display: inline-block;
 text-align: center;
 padding-left: 20%;
+}
 
 #landingPageMain * {
   border: none;
@@ -196,6 +197,9 @@ padding-left: 20%;
   background-attachment: fixed;
 }
 
+#loadinggif {
+  height: 20vh;
+}
 #landing {
   display: block;
   width: 1170px;
