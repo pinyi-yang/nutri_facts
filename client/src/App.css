@@ -219,7 +219,24 @@ nav {
   justify-content: space-between;
 }
 
+/* .dev:hover {
+  transform: rotateY(180deg);
+}
+
+.dev-card-back {
+  background-color: #2980b9;
+  color: white;
+  transform: rotateY(180deg);
+} */
+
 #landingPageTeam {
   background-color: ghostwhite;
   padding-bottom: 4em;
+}
+
+
+i, .teamIcons {
+  display: inline-block;
+  padding: 0.2em;
+  font-size: 35px !important;
 }
