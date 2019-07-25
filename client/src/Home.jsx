@@ -97,6 +97,7 @@ class Home extends React.Component {
   }
 
   render() {
+
   
     //      //  ['100kcal', 'Protain', 'Fiber', 'Carbs', 'Fat']
     // let goal = this.state.goal;
