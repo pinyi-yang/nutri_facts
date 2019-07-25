@@ -51,18 +51,6 @@ app.get('/users', (req,res) => {
   
 })
 
-
-app.get('users/:id', (req,res) => {
-  User.findById(req.params.id).populate('meal').exec( (err, users) => {
-    if (err) {
-    res.json(err)
-    }
-    res.json(users)
-  })
-})
-
-
-
 app.post('/users', (req,res) => {
   User.create({
     name: req.body.name,
@@ -181,8 +169,13 @@ app.post('/user/:uid/goals', (req,res) => {
 
 
 app.post('/api/foodsearch',(req,res)=>{
+<<<<<<< HEAD
   let foodApiUrl = `https://api.edamam.com/api/food-database/parser?ingr=peach&app_id=${process.env.EDAMAM_APP_ID}&app_key=${process.env.EDAMAM_APP_KEY}`
   axios.get(foodApiUrl).then(function(foodData ){
+=======
+  let foodApiUrl = `https://api.edamam.com/api/food-database/parser?ingr=peach&app_id=3ca2898f&app_key=cbab023867dfdece8499c75828decc2fs`
+  axios.get(foodApiUrl).then(function(foodData) {
+>>>>>>> f5335479d3b23eab45329fd656b698cbd855c90c
       res.json(foodData.data)
   }).catch(function(error){
       console.log(error);
@@ -197,7 +190,6 @@ app.post('/api/recipesearch',(req,res)=>{
       console.log(error);
   })
 })
-
   
 // app.use('/auth/login', loginLimiter);
 // app.use('/auth/signup', signupLimiter);

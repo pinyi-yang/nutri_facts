@@ -3,10 +3,6 @@ import Axios from 'axios';
 import AliceCarousel from 'react-alice-carousel';
 import "react-alice-carousel/lib/alice-carousel.css";
 
-
-
-
-
 class DayMealsRecomm extends React.Component {
   constructor(props){
     super(props); 
@@ -73,8 +69,6 @@ componentDidMount(){
     )
   }
 }
-
-
 
 
 export default DayMealsRecomm;
