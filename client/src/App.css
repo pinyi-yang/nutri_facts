@@ -1,8 +1,3 @@
-
-/** {
-  border: black solid 0.5px;
-}*/
-
 .App {
   text-align: center;
 }
@@ -97,7 +92,7 @@ nav {
   right: 10px;
 }
 
-/* * here is for AddMealForm.jsx */
+/* * here is for AddMealForm.jsx ========================================*/
 #add-meal-container {
   display: grid;
   grid-template-rows: 1fr 5fr;
@@ -112,6 +107,11 @@ nav {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   height: 100%;
+}
+
+.meals-options-container {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
 }
 
 .meals-option, .pending-option {
@@ -235,6 +235,9 @@ justify-content: center
   background-attachment: fixed;
 }
 
+#loadinggif {
+  height: 20vh;
+}
 #landing {
   display: block;
   width: 1170px;
@@ -258,12 +261,12 @@ justify-content: center
   color: #292828;
 }
 
-.landingSignup {
+.landingSignup, .loginBtn {
   background-color: #30a80f	;
   color: #292828;
 }
 
-.landingLogin, .landingSignup {
+.landingLogin, .landingSignup, .loginBtn {
   display: inline-block;
   padding: 1em 1.5em;
   position: relative;
@@ -274,7 +277,7 @@ justify-content: center
   border-radius: 10px;
 }
 
-.landingLogin, a:hover {
+.landingLogin, .loginBtn, a:hover {
   cursor: pointer;
 }
 
@@ -305,8 +308,59 @@ justify-content: center
   justify-content: space-between;
 }
 
+/* .dev:hover {
+  transform: rotateY(180deg);
+}
+
+.dev-card-back {
+  background-color: #2980b9;
+  color: white;
+  transform: rotateY(180deg);
+} */
+
 #landingPageTeam {
   background-color: ghostwhite;
   padding-bottom: 4em;
 }
 
+i, .teamIcons {
+  display: inline-block;
+  padding: 0.2em;
+  font-size: 35px !important;
+}
+
+/* Login page===============================*/
+.Login, .Signup {
+  border: solid #555 3px;
+  border-radius: 15px;
+  text-align: center;
+  padding: 25px;
+  width: 450px;
+  height: 250px;
+  background-color: rgba(194, 194, 194, 0.404);
+}
+
+.loginMain, .signupMain {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url('/landingPage.jpg') ;
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Login input[type=email] input[type=password] {
+  border: 3px solid #555;
+  border-radius: 5px;
+  width: 75%;
+  height: 25px;
+}
+
+.Signup input[type=email] input[type=password] input[type=text] {
+  border: 3px solid #555;
+  border-radius: 5px;
+  width: 75%;
+  height: 25px;
+}
