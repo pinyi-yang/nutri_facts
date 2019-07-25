@@ -97,7 +97,7 @@ class Home extends React.Component {
   }
 
   render() {
-   
+  
     //      //  ['100kcal', 'Protain', 'Fiber', 'Carbs', 'Fat']
     // let goal = this.state.goal;
     // let meals = this.state.meals
@@ -130,7 +130,7 @@ class Home extends React.Component {
     } else {
       infosub = (
         <>
-          {/* <DayMealsRecomm /> */}
+          <DayMealsRecomm /> 
           <DayMealsHistory />
         </>
       )

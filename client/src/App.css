@@ -8,6 +8,9 @@
 }
 .container{
   display:flex;
+  width: 100vw;
+  background-image:contain;
+
 
 }
 .day-meals-container {
@@ -101,6 +104,7 @@ nav {
 #add-meal-container {
   display: grid;
   grid-template-rows: 1fr 5fr;
+  height: 100%
 }
 .add-meal-form form {
   display: flex;
@@ -108,16 +112,21 @@ nav {
   justify-content: space-evenly;
 }
 
+
 .meals-options-list, .pending-meal-list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  height: 100%;
+  
+  
 }
 
 .meals-option, .pending-option {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  background-image: contain;
+  
+  
 }
 
 .dates form {
@@ -133,7 +142,13 @@ margin: 20px;
 display: inline-block;
 margin: 20px;
 }
-
+.meal{
+  height: 335px;
+  width: 24vw;
+}
+.alice-carousel__stage-item__active{
+  width:24vw;
+}
 .imgbox {
   text-align: center;
   display: grid;
@@ -164,12 +179,15 @@ margin: 20px;
 display: inline-block;
 text-align: center;
 padding-left: 20%;
+}
 
-#landingPageMain * {
+#landingPageMain *  {
   border: none;
   text-align: center;
 }
-
+.element.style{
+  width: 24vw;
+}
 #landingTitle {
   color: whitesmoke;
   font-family: 'Noto Sans KR', sans-serif;
