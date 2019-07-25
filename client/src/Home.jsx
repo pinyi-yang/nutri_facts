@@ -85,6 +85,7 @@ class Home extends React.Component {
           meals,
           goal: goals[goals.length-1]
         })
+
       } else {
         console.log('error, could not get meals and goal info from user');
         this.setState({
@@ -96,21 +97,24 @@ class Home extends React.Component {
   }
 
   render() {
-    const goals = [
-      {x: 1, y: 8},
-      {x: 2, y: 5},
-      {x: 3, y: 4},
-      {x: 4, y: 9},
-      {x: 5, y: 1},
-      {x: 6, y: 0}
-    ];
-    const meals = [
-      {x: 1, y: 4},
-      {x: 2, y: 3},
-      {x: 3, y: 2},
-      {x: 4, y: 6},
-      {x: 5, y: 0.5}
-    ]
+   
+    //      //  ['100kcal', 'Protain', 'Fiber', 'Carbs', 'Fat']
+    // let goal = this.state.goal;
+    // let meals = this.state.meals
+    // var goalData = [
+    //   {x: 1, y: goal.calories},
+    //   {x: 2, y: goal.protein},
+    //   {x: 3, y: goal.fiber},
+    //   {x: 4, y: 12},
+    //   {x: 5, y: goal.fat}
+    // ];
+    // var mealsData = [
+    //   {x: 1, y: 0},
+    //   {x: 2, y: 0},
+    //   {x: 3, y: 0},
+    //   {x: 4, y: 0},
+    //   {x: 5, y: 0}
+    // ]
 
 
     if (this.state.addMeal) {
@@ -142,7 +146,7 @@ class Home extends React.Component {
 
 
         <div className='info day-meals-container'>
-          <DayMealsCharts goals={goals} meals={meals} date={this.state.date}/>
+          <DayMealsCharts goal={this.state.goal} meals={this.state.meals} date={this.state.date}/>
           {infosub}
         </div>
       </div>
