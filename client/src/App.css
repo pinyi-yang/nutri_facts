@@ -266,8 +266,27 @@ padding-left: 20%;
   justify-content: space-between;
 }
 
+/* .dev:hover {
+  transform: rotateY(180deg);
+}
+
+.dev-card-back {
+  background-color: #2980b9;
+  color: white;
+  transform: rotateY(180deg);
+} */
+
 #landingPageTeam {
   background-color: ghostwhite;
   padding-bottom: 4em;
 }
 
+<<<<<<< HEAD
+
+i, .teamIcons {
+  display: inline-block;
+  padding: 0.2em;
+  font-size: 35px !important;
+}
+=======
+>>>>>>> 5f74db97166dc138ed7aaf37682119925e0707d0
