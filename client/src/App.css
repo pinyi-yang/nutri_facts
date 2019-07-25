@@ -1,7 +1,7 @@
 
-* {
+/* * {
   border: black solid 0.5px;
-}
+} */
 
 .App {
   text-align: center;
@@ -223,12 +223,12 @@ padding-left: 20%;
   color: #292828;
 }
 
-.landingSignup {
+.landingSignup, .loginBtn {
   background-color: #30a80f	;
   color: #292828;
 }
 
-.landingLogin, .landingSignup {
+.landingLogin, .landingSignup, .loginBtn {
   display: inline-block;
   padding: 1em 1.5em;
   position: relative;
@@ -239,7 +239,7 @@ padding-left: 20%;
   border-radius: 10px;
 }
 
-.landingLogin, a:hover {
+.landingLogin, .loginBtn, a:hover {
   cursor: pointer;
 }
 
@@ -289,4 +289,40 @@ i, .teamIcons {
   display: inline-block;
   padding: 0.2em;
   font-size: 35px !important;
+}
+
+/* Login page===============================*/
+.Login, .Signup {
+  border: solid #555 3px;
+  border-radius: 15px;
+  text-align: center;
+  padding: 25px;
+  width: 450px;
+  height: 250px;
+  background-color: rgba(194, 194, 194, 0.404);
+}
+
+.loginMain, .signupMain {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url('/landingPage.jpg') ;
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Login input[type=email] input[type=password] {
+  border: 3px solid #555;
+  border-radius: 5px;
+  width: 75%;
+  height: 25px;
+}
+
+.Signup input[type=email] input[type=password] input[type=text] {
+  border: 3px solid #555;
+  border-radius: 5px;
+  width: 75%;
+  height: 25px;
 }
