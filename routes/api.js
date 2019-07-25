@@ -7,8 +7,8 @@ const async = require('async');
 const User = require('../models/user');
 const moment = require('moment');
 
-router.post('/', (req, res) => {
-  let {foodsArr, dishesArr} = req.body;
+router.post('/foodsearch', (req, res) => {
+  let {foodsArr} = req.body;
 
   //? axios all method, not working
   // console.log('get to backend', foodsArr, dishesArr); passed
@@ -49,10 +49,39 @@ router.post('/', (req, res) => {
         image: food.parsed[0].food.image
       }
     ))
-    console.log(foods[0]);
+    // console.log(foods[0]);
     res.json(foods)
   })
 });
+
+router.post('/dishsearch', (req, res) => {
+  let {dishesArr} = req.body;
+  let dish = dishesArr[0]
+  let APIUrl = `https://api.edamam.com/search?q=${dish}&app_id=${process.env.EDAMAM_DISH_ID}&app_key=${process.env.EDAMAM_DISH_KEY}`
+  console.log('prepare fns to get foods and dishes from API', APIUrl);
+  axios.get(APIUrl).then(function(dishdata) {
+    console.log('get dishes from API', dishdata.data[0]);
+
+    let dishes = dishdata.data.hits.map(dish => (
+      {
+        name: dish.recipe.label,
+        nutirents: {
+          ENERC_KCAL: dish.recipe.totalNutrients.ENERC_KCAL.quantity,
+          FAT: dish.recipe.totalNutrients.FAT.quantity,
+          CHOCDF: dish.recipe.totalNutrients.CHOCDF.quantity,
+          FIBTG: dish.recipe.totalNutrients.FIBTG.quantity,
+          PROCNT: dish.recipe.totalNutrients.PROCNT.quantity
+        },
+        image: dish.recipe.image,
+        url: dish.recipe.url
+      }
+    ))
+    
+    res.json(dishes)
+  })
+});
+
+
 
 //get meals?start=&end=   date format 'YYYY-MM-DD'
 router.get('/users/:id/meals', (req,res) => {
