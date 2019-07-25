@@ -7,22 +7,18 @@ import AddMealForm from './AddMealForm';
 import PendingMeal from './PendingMeal';
 import axios from 'axios';
 import moment from 'moment';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom';
-
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       meals: [],
+      goal: null,
       pendingMeal: [],
       addMeal: false,
       date: moment().format('YYYY-MM-DD'),
-      type: ''
+      type: '',
+      message: ''
     }
   
     this.handleAddMealClick = this.handleAddMealClick.bind(this);
@@ -83,7 +79,19 @@ class Home extends React.Component {
     console.log('get meal from user');
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('mernToken');
     axios.get(`/api/users/${this.props.user._id}/meals?start=${this.state.date}&end=${this.state.date}`).then(res => {
-      console.log(res.data);
+      let {messageType, meals, goals} = res.data;
+      if (messageType === 'success') {
+        this.setState({
+          meals,
+          goal: goals[goals.length-1]
+        })
+      } else {
+        console.log('error, could not get meals and goal info from user');
+        this.setState({
+          message: 'error, could not get meals and goal info from user'
+        })
+      }
+      
     })
   }
 

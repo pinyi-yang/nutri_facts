@@ -63,12 +63,12 @@ router.get('/users/:id/meals', (req,res) => {
   .populate({
     path: 'meals',
     match: {date: {$gt: startDate,$lt: endDate}}
-  }).exec( (err, user) => {
+  }).populate('goals').exec( (err, user) => {
     if (err) {
     res.json(err)
     }
     //!!! don't pass user out here. password will be included
-    res.json(user.meals);
+    res.status(200).json({messageType:'success', meals: user.meals, goals: user.goals});
   })
 })
 
