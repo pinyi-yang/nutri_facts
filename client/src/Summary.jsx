@@ -64,20 +64,26 @@ class Summary extends React.Component {
       let {messageType, goals} = res.data;
       if (messageType === 'success') {
         let goal = goals[goals.length-1];
-        this.setState({
-          goal,
-          calories: goal.calories,
-          fat: goal.fat,
-          protein: goal.protein,
-          fiber: goal.fiber,
-          carbs: goal.carbs
-        })
-
-      } else {
-        this.setState({
-          message: 'error, could not get goals info from user'
-        })
-      }
+        if (goal) {
+          this.setState({
+            goal,
+            calories: goal.calories,
+            fat: goal.fat,
+            protein: goal.protein,
+            fiber: goal.fiber,
+            carbs: goal.carbs
+          }) 
+        } else {
+          this.setState({
+            message: 'error, could not get goals info from user',
+            calories: '',
+            fat: '',
+            protein: '',
+            fiber: '',
+            carbs: ''
+          })
+        }
+      } 
     })
   }
 
@@ -88,7 +94,7 @@ class Summary extends React.Component {
     // let protein = this.state.goal ? this.setState({protein: this.state.goal.protein}): '';
     // let fiber = this.state.goal ? this.setState({fiber: this.state.goal.fiber}): '';
     // let carbs = this.state.goal ? this.setState({carbs: this.state.goal.carbs}): '';
-
+    var goals
     return (
       <div className='main'>
 
