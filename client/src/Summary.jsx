@@ -110,8 +110,8 @@ class Summary extends React.Component {
           <input onChange={this.handleInputChange} value={this.state.fat} type="text" name="fat" placeholder="Enter fat..."/>
           <input onChange={this.handleInputChange} value={this.state.protein} type="text" name="protein" placeholder="Enter protein..."/>
           <input onChange={this.handleInputChange} value={this.state.fiber} type="text" name="fiber" placeholder="Enter fiber..."/>
-          <input onChange={this.handleInputChange} value={this.state.carbs} type="text" name="carbs" placeholder="Enter carbs..."/>
-          <input type="submit"/>
+          <input onChange={this.handleInputChange} value={this.state.carbs} type="text" name="carbs" placeholder="Enter carbs..."/><br/>
+          <input className="goalSubmit" type="submit"/>
         </form>
         <div className="userGoal">
           <p>Calories: {this.state.calories}kcal</p> 

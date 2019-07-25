@@ -60,6 +60,9 @@ const LandingPage = props => {
             </div>
           </div>
         </div>
+        <footer>
+          
+        </footer>
         </div>
     </div>
   )
