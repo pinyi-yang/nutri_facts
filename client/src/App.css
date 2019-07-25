@@ -122,3 +122,7 @@ nav {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+#loadinggif {
+  height: 20vh;
+}

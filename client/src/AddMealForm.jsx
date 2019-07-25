@@ -10,7 +10,8 @@ class AddMealForm extends React.Component {
       foods: '',
       dishes: '',
       type: '',
-      options: []
+      options: [],
+      message: '',
     }
     this.handleTypeChange = this.handleTypeChange.bind(this);
     this.handleDishesChange = this.handleDishesChange.bind(this);
@@ -27,19 +28,22 @@ class AddMealForm extends React.Component {
   handleFoodsChange(e) {
     this.setState({
       foods: e.target.value,
-      dishes: ''
+      dishes: '',
     })
   }
 
   handleDishesChange(e) {
     this.setState({
       foods: '',
-      dishes: e.target.value
+      dishes: e.target.value,
     })
   }
 
   handleShowMeal(e) {
     e.preventDefault();
+    this.setState({
+      message: 'Loading Data'
+    })
     let {foods, dishes} = this.state;
     let foodsArr;
     let dishesArr;
@@ -48,18 +52,28 @@ class AddMealForm extends React.Component {
 
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('mernToken');
     
-    axios.post('/api', {foodsArr, dishesArr}).then(res => {
-      console.log(res.data);
-      let option = res.data;
-      // option.type = this.state.type;
-      // console.log('meal type is', option.type);
-      this.setState({
-        options: option,
-        foods: '',
-        dishes: ''
+    if (foods) {
+      axios.post('/api', {foodsArr, dishesArr}).then(res => {
+        console.log(res.data);
+        let option = res.data;
+        // option.type = this.state.type;
+        // console.log('meal type is', option.type);
+        this.setState({
+          options: option,
+          foods: '',
+          dishes: ''
+        })
+        console.log('the food is', this.state.options);
       })
-      console.log('the food is', this.state.options);
-    })
+    } else if (dishes) {
+
+    } else {
+      this.setState({
+        message: 'Please input a food or dish'
+      })
+    }
+
+
   }
 
   render() {
@@ -94,12 +108,14 @@ class AddMealForm extends React.Component {
             </div>
           </form>
         </div>
-
         <div className='meals-options-list-div'>
-          <MealOptions options={this.state.options} 
-                        handleMealOptionSelect={this.props.handleMealOptionSelect}
-                        type={this.state.type}
-                        />
+          {this.state.options.length === 0 ? 
+            <img src='../public/gif/loading.gif' alt={this.state.message} id='loadinggif'/> : 
+            <MealOptions options={this.state.options} 
+                          handleMealOptionSelect={this.props.handleMealOptionSelect}
+                          type={this.state.type}
+                          /> 
+          }
         </div>
       </div>
     );
