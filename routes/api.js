@@ -72,6 +72,17 @@ router.get('/users/:id/meals', (req,res) => {
   })
 })
 
+// get goals for a user
+router.get('/users/:id', (req, res) => {
+  User.findById(req.params.id).populate('goals').exec( (err, user) => {
+    console.log(req.params.id, user);
+    if (err) {
+      res.json(err)
+    }
+    res.status(200).json({messageType: 'success', goals: user.goals});
+  })
+})
+
 router.get('meals/:id', (req,res) => {
   Meals.findById(req.params.id, (err, meals) => {
   if (err) {

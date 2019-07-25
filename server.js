@@ -156,8 +156,8 @@ app.post('/user/:uid/goals', (req,res) => {
     if (err) {
       res.json(err);
     }
-    var {calories, fat, protein, fiber} = req.body
-    Goal.create({calories, fat, protein, fiber}, function(err, goal) {
+    var {calories, fat, protein, fiber, carbs} = req.body
+    Goal.create({calories, fat, protein, fiber, carbs}, function(err, goal) {
       user.goals.push( goal );
       console.log(user);
       user.save();
