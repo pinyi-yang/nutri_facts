@@ -1,5 +1,11 @@
 import React from 'react';
 import { userInfo } from 'os';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch
+} from 'react-router-dom';
 
 
 class ProfileBar extends React.Component {
@@ -58,8 +64,8 @@ class ProfileBar extends React.Component {
         <img id='profilePic' src="/profilePic.png" alt=""/>
         <p className='profileName'>Hello, {this.props.user.name}</p>
         <div className="sidebar">
-          <a href="#">Breakfast</a>
-          <a href="#">Lunch</a>
+          <Link to='/'>Home</Link>
+          <Link to='/summary'>Summary</Link>
           <a href='#' onClick={this.props.handleAddMealClick}>➕ Add a Meal</a>
           {/* <button onClick={this.handleAddMealClick}>✚ Add a Meal</button>
           {addMealForm} */}

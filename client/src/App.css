@@ -30,7 +30,7 @@
   position: fixed;
   top: 16vh;
   min-width: 100vw;
-  height: 86vh;
+  height: 84vh;
   display: grid;
   grid-template-columns: 1fr 4fr;
 }
@@ -290,12 +290,8 @@ padding-left: 20%;
   padding-bottom: 4em;
 }
 
-<<<<<<< HEAD
-
 i, .teamIcons {
   display: inline-block;
   padding: 0.2em;
   font-size: 35px !important;
 }
-=======
->>>>>>> 5f74db97166dc138ed7aaf37682119925e0707d0
