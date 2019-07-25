@@ -16,6 +16,7 @@ const Header = props => {
       var userLogin = (
         <nav>
           <Link to='/' onClick={props.logout}>Logout</Link>
+          <Link to='/dates'> Set Date</Link>
           <Link to='/summary'>Profile</Link>
         </nav>
       )

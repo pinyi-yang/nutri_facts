@@ -28,6 +28,7 @@ class AddMealForm extends React.Component {
 
   handleShowMeal(e) {
     e.preventDefault();
+    console.log('get meals from api');
     let {foods, dishes} = this.state;
     let foodsArr;
     let dishesArr;

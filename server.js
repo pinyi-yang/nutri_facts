@@ -107,11 +107,24 @@ app.delete("/users/:uid/meals/:mid", (req,res) => {
 
 app.get('/meals', (req,res) => {
     Meal.find({}, function(err,meals){
-        if (err) res.json(err)
+        if (err) {
+        res.json(err)
+        }
         res.json(meals)
     })
     
 })
+
+
+app.get('/meals/:mid', (req,res) => {
+    Meal.findById(req.params.id, function(err, meals) {
+        if (err) {
+        res.json(err)
+        }
+        res.json(meals)
+    })
+})
+
 
 app.post('/meals', (req,res) => {
     Meal.create({
@@ -190,7 +203,7 @@ app.post('/api/recipesearch',(req,res)=>{
 // app.use('/auth/signup', signupLimiter);
 
 app.use('/auth', require('./routes/auth'));
-app.use('/api', require('./routes/api'));
+app.use('/api', expressJWT({secret: process.env.JWT_SECRET}), require('./routes/api'));
 
 app.listen(process.env.PORT, () => {
   console.log('🖲🖲🖲 server connected to port ' + process.env.PORT || 3001);

@@ -60,17 +60,21 @@ class Summary extends React.Component {
       <div className="summaryPage">
         <p>Hello, {name}</p>
         <h3>Set a Goal:</h3>
+        <p>Calories: {this.state.calories} Fat: {this.state.fat} Protein: {this.state.protein} Fiber: {this.state.fiber}</p>
         <form onSubmit={this.handleSubmit}>
+          <div className="goalinput">
           <input onChange={this.handleInputChange} type="text" name="calories" placeholder="Enter calories..."/>
           <input onChange={this.handleInputChange} type="text" name="fat" placeholder="Enter fat..."/>
           <input onChange={this.handleInputChange} type="text" name="protein" placeholder="Enter protein..."/>
           <input onChange={this.handleInputChange} type="text" name="fiber" placeholder="Enter fiber..."/>
+          </div>
           <input type="submit"/>
         </form>
         </div>
-        <Link to='/'>Home</Link>
+        <nav>
+        <Link to='/'>Home</Link> 
         <Link to='/dates'>Set Date</Link>
-        <p>Calories: {this.state.calories} Fat: {this.state.fat} Protein: {this.state.protein} Fiber: {this.state.fiber}</p>
+        </nav>
       </div>
     )
   }
