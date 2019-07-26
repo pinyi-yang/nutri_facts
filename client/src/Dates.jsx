@@ -9,6 +9,7 @@ import {
   Switch
 } from 'react-router-dom';
 import { deflateRawSync } from 'zlib';
+import { getFontColorFromBackground } from 'react-vis/dist/utils/scales-utils';
 
 
 class Dates extends React.Component {
@@ -39,13 +40,30 @@ class Dates extends React.Component {
         meals,
         goal: goals[goals.length-1],
         currentdate,
-        enddate
+        enddate,
       })
     })
   }
 
 
   render() {
+    let meals =this.state.meals;
+    let foodCount = {};
+    let nutriStat = [];
+    meals.forEach(function(meal) {
+      meal.food.forEach(function(food) {
+      if(foodCount[food.name]) {
+        foodCount[food.name]++
+        } else {
+        foodCount[food.name] = 1;
+        }
+        for (let key in food.nutriets) 
+        nutriStat[key] = food.nutrients[key]
+      })
+    })
+
+    console.log(foodCount);
+
     var name = this.props.user ? this.props.user.name : '';
     return (
       <header className="App-header">
