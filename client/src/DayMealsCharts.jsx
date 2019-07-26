@@ -62,10 +62,11 @@ const DayMealsCharts = props => {
           style={{position: 'absolute', right: '25px', top: '70px'}}
         /> */}
         <HorizontalBarSeries data={goalData} color="rgba(255,255,255,0)" cluster='nutri' stroke="#f70" style={{strokeWidth: 2}}/>
-        <HorizontalBarSeries data={mealsData}  color="#59b953" cluster='nutri' barWidth={0.72}/>
+        <HorizontalBarSeries data={mealsData.slice(0,-2)}  color="#59b953" cluster='nutri' barWidth={0.72}/>
+        <HorizontalBarSeries data={mealsData.slice(-2)}  color='red' cluster='nutri' barWidth={0.72}/>
         {/* <XAxis tickValues={[1, 2, 3, 4, 5]}/> */}
-        <YAxis tickPadding={0.5} style={{ text:{fill:'black'} }}/>
-        <XAxis style={{ text:{fill:'black'} }}/>
+        <YAxis tickPadding={0.5} style={{ text:{fill:'black'}, line: {stroke: 'grey'} }}/>
+        <XAxis style={{ text:{fill:'black'}, line: {stroke: 'grey'} }}/>
       </XYPlot>
     </div>
   );

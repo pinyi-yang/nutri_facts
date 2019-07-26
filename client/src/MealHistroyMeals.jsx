@@ -40,7 +40,7 @@ class MealHistroyMeals extends React.Component {
       console.log(meal.type);
       return (
         <div className='meal-history-meal-single'>
-          {meal.type ? meal.type : 'random'}
+          <b>{meal.type ? meal.type : 'random'}</b>
           <ul>
             {meal.food.map(item => (
               <li>{item.name}</li>

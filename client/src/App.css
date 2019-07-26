@@ -183,6 +183,7 @@ nav {
   display: flex;
   flex-direction: column;
   align-content: space-between;
+  text-align: center;
 }
 
 .foods-nutri-indicator {

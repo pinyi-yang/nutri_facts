@@ -18,11 +18,11 @@ const FoodsNutriIndicator = props => {
   let foods = props.foods.food;
   console.log(foods);
   let mealsData = [
-    {y: 1, x: 0},
-    {y: 2, x: 0},
-    {y: 3, x: 0},
-    {y: 4, x: 0},
-    {y: 5, x: 0}
+    {y: '100kcal', x: 0},
+    {y: 'Protain', x: 0},
+    {y: 'Fiber', x: 0},
+    {y: 'Fat', x: 0},
+    {y: 'Carbs', x: 0}
   ]; 
 
   if (foods.length > 0) {
@@ -39,10 +39,11 @@ const FoodsNutriIndicator = props => {
 
   return (
     <div className='foods-nutri-indicator'>
-      <FlexibleWidthXYPlot height={150} stackBy='x'>
-        <HorizontalBarSeries data={mealsData} />
+      <FlexibleWidthXYPlot height={150} margin={{left: 50}} yType="ordinal">
+        <HorizontalBarSeries data={mealsData.slice(0,-2)}  color="#59b953" cluster='meal'/>
+        <HorizontalBarSeries data={mealsData.slice(-2)}  color='red' cluster='meal'/>
         {/* <XAxis tickValues={[1, 2, 3, 4, 5]}/> */}
-        <YAxis tickFormat={v => yticks[v]}/>
+        <YAxis tickPadding={0.5} />
         <XAxis />
       </FlexibleWidthXYPlot>
     </div>
