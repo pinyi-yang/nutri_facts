@@ -1,19 +1,12 @@
-
-
-/** {
-  border: black solid 0.5px;
-}*/
-
-/* * {
-  border: black solid 0.5px;
-} */
+body {
+  background-image: url('/landingPage.jpg');
+}
 
 .App {
   text-align: center;
 }
 .container{
   display:flex;
-
 }
 .day-meals-container {
   display: grid;
@@ -24,8 +17,8 @@
   height: 16vh;
   text-align: center;
   font-size: calc(10px + 2vmin);
-  background-image: linear-gradient(rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.7)), url('/landingPage.jpg');
-  height: 100vh;
+  background-color: rgba(194, 194, 194, 0.604);
+  /* background-image: linear-gradient(rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.7)), url('/landingPage.jpg'); */
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
@@ -33,32 +26,43 @@
 
 #header-img {
   height: 14vh;
+  background-color: rgba(255, 255, 255, 0.644);
+  border-radius:7vh;
+  margin-top:1vh;
 }
 
 .main {
   position: fixed;
-  top: 16vh;
+  top: 17vh;
   min-width: 100vw;
-  height: 84vh;
+  height: 85vh;
   display: grid;
   grid-template-columns: 1fr 4fr;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)), url('/landingPage.jpg');
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
 }
 
 .info {
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 0.6em;
   text-align: center;
   overflow: scroll;
+  background: #dfdfdfb0;
 }
 
 .rv-xy-plot {
   text-align: center;
+  margin: auto;
 }
 
 .profileBar {
-  background-color: rgba(194, 194, 194, 0.604);
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 0.8em;
+  background-color: rgba(199, 198, 198, 0.801);
+  margin-right: 10px;
 }
 
 .sidebar, a {
@@ -107,6 +111,27 @@ nav {
   position: absolute;
   top: 5px;
   right: 10px;
+}
+
+/* HOME page meal history =========================================== */
+.day-meals-history {
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: black solid 2px;
+  padding: 0.5em 0.6em;
+  margin: 5px 10px;
+  grid-area: 2/1/4/2
+}
+
+.meal-history-title {
+  position: relative;
+  text-align: center;
+}
+
+#meal-history-title-date {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 /* * here is for AddMealForm.jsx ========================================*/
@@ -174,14 +199,14 @@ margin: 20px;
 }
 
 
-input[type=date] {
+/* input[type=date] {
 border: 3px solid black;
 border-radius: 5px;
 width: 85%;
 height: 30px;
-}
+} */
 
-input[type=submit] {
+/* input[type=submit] {
 background-color: #30a80f;
 border-radius: 12px;
 border: none;
@@ -190,15 +215,21 @@ padding: 16px 32px;
 text-decoration: none;
 margin: 4px 2px;
 cursor: pointer;
-}
+} */
 
-
-select {
+/* select {
   border: 3px solid black;
   border-radius: 5px;
   width: 85%;
   height: 30px;
-}
+} */
+
+/* input[type=text] 
+  border: 3px solid black;
+  border-radius: 5px;
+  width: 85%;
+  height: 30px;
+} */
 
 
 .imgbox {
