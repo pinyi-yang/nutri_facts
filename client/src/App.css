@@ -113,6 +113,17 @@ nav {
   right: 10px;
 }
 
+.page-icon {
+  position: absolute;
+  width: 40px;
+  border-radius: 100%;
+  background: rgb(199, 199, 199);
+}
+
+.page-icon:hover {
+  box-shadow: 1px 1px 3px 1px grey;
+  background: rgb(224, 220, 220);
+}
 /* HOME page meal history =========================================== */
 .day-meals-history {
   box-sizing: border-box;
@@ -120,18 +131,64 @@ nav {
   border: black solid 2px;
   padding: 0.5em 0.6em;
   margin: 5px 10px;
-  grid-area: 2/1/4/2
+  grid-area: 2/1/4/2;
+  position: relative;
+  min-height: 320px;
+}
+
+#history-lastpage-icon, #history-nextpage-icon {
+  position: absolute;
+  width: 40px;
+  top: 145px;
+  border-radius: 100%;
+  background: rgb(199, 199, 199);
+}
+
+#history-lastpage-icon {
+  left: 0;
+}
+
+#history-nextpage-icon {
+  right: 0;
+}
+
+#history-lastpage-icon:hover, #history-nextpage-icon:hover {
+  box-shadow: 1px 1px 3px 1px grey;
+  background: rgb(224, 220, 220);
 }
 
 .meal-history-title {
   position: relative;
-  text-align: center;
+  text-align: left;
 }
 
-#meal-history-title-date {
-  position: absolute;
-  top: 0;
-  left: 0;
+.meal-history-meals {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  margin-top: 2%;
+}
+
+.meal-history-meals ul {
+  min-height: 100px;
+  text-align: left;
+  margin:2px 0;
+}
+
+.meal-history-meal-single {
+  border: black solid 2px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+}
+
+.foods-nutri-indicator {
+  width: 180px;
+  min-height: 100px;
+  margin:auto;
 }
 
 /* * here is for AddMealForm.jsx ========================================*/
@@ -149,15 +206,18 @@ nav {
   height: 100%;
 }
 .meals-options-list, .pending-meal-list {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  /* grid-template-columns: repeat(4, 1fr); */
 
 }
 
 .meals-options-container, .pending-meal-container {
-  height: 100%;
+  min-height: 120px;
   display: grid;
   grid-template-columns: 4fr 1fr;
+  border: black solid 2px;
 }
 
 .meals-option, .pending-option {
@@ -167,6 +227,35 @@ nav {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  min-width: 150px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  border: grey solid 2px;
+}
+
+.meal-option-name {
+  color: black;
+  background: rgba(194, 194, 194, 0.733);
+  min-height: 2em;
+  display: flex;
+  align-items: space-around;
+  justify-content: space-around;
+  width: 90%;
+  margin: auto;
+  border-radius: 3px;
+}
+
+#options-lastpage-icon, #options-nextpage-icon {
+  top: 38%;
+  width: 32px;
+}
+
+#options-lastpage-icon {
+  left: -0.5%;
+}
+
+#options-nextpage-icon {
+  right: -0.5%;
 }
 
 .message-div {

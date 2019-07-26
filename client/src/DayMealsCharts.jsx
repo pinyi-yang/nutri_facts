@@ -43,8 +43,8 @@ const DayMealsCharts = props => {
          }
        })
      })
-     console.log(meals);
-     console.log(mealsData);
+    //  console.log(meals);
+    //  console.log(mealsData);
    }
         
   return (

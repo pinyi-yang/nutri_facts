@@ -21,7 +21,7 @@ const PendingMeal = props => {
     )
   } else {
     content = <div className='message-div'>
-      Waiting for Food
+      Waiting for Food, Click to Add.
     </div>
   }
 
