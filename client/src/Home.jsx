@@ -1,3 +1,4 @@
+    
 import React from 'react';
 import DayMealsCharts from './DayMealsCharts';
 import DayMealsHistory from './DayMealsHistory';
@@ -59,19 +60,6 @@ class Home extends React.Component {
   }
 
   handEnjoyMealClick() {
-    let newmeal = this.state.pendingMeal.slice();
-    let mealscopy = this.state.meals.slice();
-    let type = this.state.type;
-    mealscopy.push({food:newmeal});
-    axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('mernToken');
-    axios.post(`/api/users/${this.props.user._id}/meals`, {newmeal, type}).then(res => {
-      console.log('added new meal');
-      this.setState({
-        meals: mealscopy,
-        pendingMeal: [],
-        addMeal: false,
-        type: ''
-      })
     if (this.state.pendingMeal.length > 0) {
       let newmeal = this.state.pendingMeal.slice();
       let mealscopy = this.state.meals.slice();
@@ -89,7 +77,7 @@ class Home extends React.Component {
       })
     }
   }
-  
+
   componentDidMount() {
     console.log('get meal from user');
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('mernToken');
@@ -110,29 +98,9 @@ class Home extends React.Component {
       
     })
   }
-  
+
   render() {
-
-  
-    //      //  ['100kcal', 'Protain', 'Fiber', 'Carbs', 'Fat']
-    // let goal = this.state.goal;
-    // let meals = this.state.meals
-    // var goalData = [
-    //   {x: 1, y: goal.calories},
-    //   {x: 2, y: goal.protein},
-    //   {x: 3, y: goal.fiber},
-    //   {x: 4, y: 12},
-    //   {x: 5, y: goal.fat}
-    // ];
-    // var mealsData = [
-    //   {x: 1, y: 0},
-    //   {x: 2, y: 0},
-    //   {x: 3, y: 0},
-    //   {x: 4, y: 0},
-    //   {x: 5, y: 0}
-    // ]
-
-
+   
     if (this.state.addMeal) {
       var infosub = (
         <>
@@ -146,21 +114,18 @@ class Home extends React.Component {
     } else {
       infosub = (
         <>
-          <DayMealsRecomm /> 
+          <DayMealsRecomm />
           <DayMealsHistory />
         </>
       )
     }
     return (
       <div className='main'>
-
         <ProfileBar 
                   user={this.props.user}
                   handNewMealSubmit={this.handNewMealSubmit}
                   handleAddMealClick={this.handleAddMealClick}
                   />
-
-
         <div className='info day-meals-container'>
           <DayMealsCharts goal={this.state.goal} meals={this.state.meals} date={this.state.date}/>
           {infosub}
@@ -169,5 +134,4 @@ class Home extends React.Component {
     );
   }
 }
-
 export default Home;
