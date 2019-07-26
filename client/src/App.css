@@ -120,6 +120,8 @@ nav a:hover {
 
 #profilePage {
   display: block;
+  text-align: center;
+
 }
 
 nav {
@@ -221,7 +223,8 @@ nav {
   justify-content: space-evenly;
 }
 #loadinggif {
-  margin: auto;
+  margin-left: 25%;
+  text-align: center;
 }
 .meals-options-list-div {
   height: 100%;
