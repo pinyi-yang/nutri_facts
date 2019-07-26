@@ -14,6 +14,7 @@ body {
 .day-meals-container {
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
+  text-align: center;
 }
 
 .App-header {
@@ -88,7 +89,7 @@ body {
 nav a {
   padding: 12px 8px 6px 16px;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 20px;
   color: #292828;
   display: block;
 }
@@ -120,6 +121,8 @@ nav a:hover {
 
 #profilePage {
   display: block;
+  text-align: center;
+
 }
 
 nav {
@@ -221,7 +224,8 @@ nav {
   justify-content: space-evenly;
 }
 #loadinggif {
-  margin: auto;
+  margin-left: 25%;
+  text-align: center;
 }
 .meals-options-list-div {
   height: 100%;
