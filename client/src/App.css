@@ -224,8 +224,10 @@ nav {
   justify-content: space-evenly;
 }
 #loadinggif {
-  margin-left: 25%;
+  margin-left: 0;
   text-align: center;
+  height: 18vh;
+  border-radius: 10px;
 }
 .meals-options-list-div {
   height: 100%;
@@ -243,6 +245,8 @@ nav {
   display: grid;
   grid-template-columns: 4fr 1fr;
   border: black solid 2px;
+  border-radius: 5px;
+  padding: 3px;
 }
 
 .meals-option, .pending-option {
@@ -428,9 +432,6 @@ justify-content: center
   background-attachment: fixed;
 }
 
-#loadinggif {
-  height: 20vh;
-}
 #landing {
   display: block;
   width: 1170px;
