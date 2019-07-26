@@ -16,6 +16,7 @@ const FoodsNutriIndicator = props => {
   const nutrientsKeys = ['ENERC_KCAL', 'PROCNT', 'FIBTG', 'FAT', 'CHOCDF']
   const yticks = ['', '100kcal', 'Protain', 'Fiber', 'Fat', 'Carbs']
   let foods = props.foods.food;
+  let max = 0;
   console.log(foods);
   let mealsData = [
     {y: '100kcal', x: 0},
@@ -30,7 +31,10 @@ const FoodsNutriIndicator = props => {
       for (let key in food.nutrients) {
         let value = food.nutrients[key]
         key === 'ENERC_KCAL' ? value = value/100 : value=value;
-        console.log(key, value); 
+        console.log(key, value);
+        // if (value > max) {
+        //   max = value
+        // } 
         mealsData[nutrientsKeys.indexOf(key)].x += value;
       }
     })

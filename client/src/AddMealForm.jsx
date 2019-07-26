@@ -9,7 +9,7 @@ class AddMealForm extends React.Component {
     this.state = {
       foods: '',
       dishes: '',
-      type: '',
+      type: 'snack',
       options: [],
       message: '',
       mouseOnOption: null
@@ -133,8 +133,8 @@ class AddMealForm extends React.Component {
           <form onSubmit={this.handleShowMeal}>
             <div className="type">
               Type: {' '}
-              <select name='type' onChange={this.handleTypeChange}>
-                <option value='snack'>Snack</option>
+              <select name='type' value={this.state.type} onChange={this.handleTypeChange}>
+                <option value='snack' selected="selected">Snack</option>
                 <option value='breakfast'>Breakfast</option>
                 <option value='lunch'>Lunch</option>
                 <option value='supper'>Supper</option>
