@@ -31,7 +31,7 @@ const DayMealsCharts = props => {
        {y: 2, x: goal.protein},
        {y: 3, x: goal.fiber},
        {y: 4, x: goal.fat},
-       {y: 5, x: 300}
+       {y: 5, x: goal.carbs}
      ];
 
      meals.forEach(function(meal) {

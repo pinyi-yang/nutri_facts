@@ -112,10 +112,8 @@ class Home extends React.Component {
       )
     } else {
       infosub = (
-        <>
-          {/* <DayMealsRecomm /> */}
-          <DayMealsHistory />
-        </>
+
+          <DayMealsHistory meals={this.state.meals} user={this.props.user}/>
       )
     }
     return (
