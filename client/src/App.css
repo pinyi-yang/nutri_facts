@@ -165,12 +165,13 @@ color: white;
 .current  {
 display: inline-block;
 margin: 20px;
-
+text-align: center;
 }
 
 .end {
 display: inline-block;
 margin: 20px;
+text-align: center;
 }
 
 
@@ -231,7 +232,8 @@ select {
 display: inline-block;
 text-align: center;
 padding-left: 20%;
-justify-content: center
+justify-content: center;
+color: white;
 }
 
 #landingPageMain * {
