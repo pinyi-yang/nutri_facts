@@ -11,10 +11,10 @@ body {
 .container{
   display:flex;
 }
-.day-meals-container {
+/* .day-meals-container {
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
-}
+} */
 
 .App-header {
   height: 16vh;
