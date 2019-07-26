@@ -1,7 +1,6 @@
 import React from 'react';
 
 const MealOptions = props => (
-<<<<<<< HEAD
   
   <div className='info-sub meals-options-container'>
     <div className='meals-options-list'>
@@ -17,7 +16,6 @@ const MealOptions = props => (
     <div className='meal-option-nutri-indicator'>
       
     </div>
-=======
   <div className='meals-options-list'>
     {props.options.map((option, i) => (
       <div className='meals-option' 
@@ -29,7 +27,6 @@ const MealOptions = props => (
         {option.name}
       </div>
     ))}
->>>>>>> upstream/master
   </div>
 
 )

@@ -59,7 +59,6 @@ class Home extends React.Component {
   }
 
   handEnjoyMealClick() {
-<<<<<<< HEAD
     let newmeal = this.state.pendingMeal.slice();
     let mealscopy = this.state.meals.slice();
     let type = this.state.type;
@@ -72,7 +71,7 @@ class Home extends React.Component {
         pendingMeal: [],
         addMeal: false,
         type: ''
-=======
+      })
     if (this.state.pendingMeal.length > 0) {
       let newmeal = this.state.pendingMeal.slice();
       let mealscopy = this.state.meals.slice();
@@ -87,11 +86,10 @@ class Home extends React.Component {
           addMeal: false,
           type: ''
         })
->>>>>>> upstream/master
       })
     }
   }
-
+  
   componentDidMount() {
     console.log('get meal from user');
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('mernToken');
@@ -112,7 +110,7 @@ class Home extends React.Component {
       
     })
   }
-
+  
   render() {
 
   
