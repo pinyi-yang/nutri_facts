@@ -58,14 +58,14 @@ class ProfileBar extends React.Component {
     //     </div>
     //   )
     // }
-    
+    var name = this.props.user ? this.props.user.name : '';
     return (
       <div className="profileBar">
         <img id='profilePic' src="/profilePic.png" alt=""/>
-        <p className='profileName'>Hello, {this.props.user.name}</p>
+        <p className='profileName'>Hello, {name}</p>
         <div className="sidebar">
           <Link to='/'>Home</Link>
-          <Link to='/summary'>Summary</Link>
+          <Link to='/summary'>Profile</Link>
           <a href='#' onClick={this.props.handleAddMealClick}>➕ Add a Meal</a>
           {/* <button onClick={this.handleAddMealClick}>✚ Add a Meal</button>
           {addMealForm} */}

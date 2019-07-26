@@ -1,5 +1,8 @@
 body {
   background-image: url('/landingPage.jpg');
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .App {
@@ -82,6 +85,18 @@ body {
   color: #f1f1f1;
 }
 
+nav a {
+  padding: 12px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #292828;
+  display: block;
+}
+
+nav a:hover {
+  color: #f1f1f1;
+}
+
 .Login, .Signup {
   text-align: center;
 }
@@ -101,6 +116,10 @@ body {
 
 .summaryPage {
   text-align: center;
+}
+
+#profilePage {
+  display: block;
 }
 
 nav {
