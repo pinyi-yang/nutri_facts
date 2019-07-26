@@ -22,30 +22,30 @@ const DayMealsCharts = props => {
     {y: 5, x: 0}
   ]; 
    //  ['100kcal', 'Protain', 'Fiber', 'Carbs', 'Fat']
-   if (props.goal && props.meals) {
-     let goal = props.goal;
-     console.log(goal);
-     let meals = props.meals
-     goalData = [
-       {y: 1, x: goal.calories},
-       {y: 2, x: goal.protein},
+  if (props.goal && props.meals) {
+    let goal = props.goal;
+    console.log(goal);
+    let meals = props.meals
+    goalData = [
+      {y: 1, x: goal.calories},
+      {y: 2, x: goal.protein},
        {y: 3, x: goal.fiber},
-       {y: 4, x: goal.fat},
-       {y: 5, x: 300}
-     ];
+        {y: 4, x: goal.fat},
+        {y: 5, x: 300}
+      ];
 
-     meals.forEach(function(meal) {
-       meal.food.forEach(function(food) {
-         for (let key in food.nutrients) {
-           let value = food.nutrients[key]
-           key === 'ENERC_KCAL' ? value = value/100 : value=value; 
-           mealsData[nutrientsKeys.indexOf(key)].x += value;
-         }
-       })
-     })
-     console.log(meals);
-     console.log(mealsData);
-   }
+      meals.forEach(function(meal) {
+        meal.food.forEach(function(food) {
+          for (let key in food.nutrients) {
+            let value = food.nutrients[key]
+            key === 'ENERC_KCAL' ? value = value/100 : value=value; 
+            mealsData[nutrientsKeys.indexOf(key)].x += value;
+          }
+        })
+      })
+      console.log(meals);
+      console.log(mealsData);
+    }
         
   return (
     <div className='day-meals-chart'>

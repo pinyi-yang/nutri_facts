@@ -10,9 +10,18 @@
   display:flex;
   width: 100vw;
   background-image:contain;
-
-
 }
+.mealRecomendations{
+  display:flex;
+  flex-direction:row;
+  overflow-x: auto;
+}
+.mealRecomendations .meal {
+  flex-shrink: 0;
+  width: 300px;
+  height: 300px;
+}
+
 .day-meals-container {
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
@@ -112,13 +121,20 @@ nav {
   flex-direction: row;
   justify-content: space-evenly;
 }
-
-
+.meals-option{
+  border-radius: 15px;
+}
+.pending-option{
+  border-radius: 15px;
+  padding: 1px;
+}
 .meals-options-list, .pending-meal-list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  height:30
-  vh;
+  height:127px;
+  border-radius: 15px;
+  
+  
   
   
 }
@@ -155,8 +171,11 @@ margin: 20px;
   height: 335px;
   width: 24vw;
 }
-.alice-carousel__stage-item__active{
-  width:24vw;
+.meal_recomendations{
+  text-align: center;
+}
+.alice-carousel{
+  text-align: center;
 }
 .imgbox {
   text-align: center;

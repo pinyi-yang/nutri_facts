@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import AliceCarousel from 'react-alice-carousel';
-import "react-alice-carousel/lib/alice-carousel.css";
+
 
 class DayMealsRecomm extends React.Component {
 
@@ -12,8 +11,7 @@ class DayMealsRecomm extends React.Component {
       url: "",
       image: "",
       result: [],
-      currentIndex: 0,
-      itemsInSlide: 4,
+      
     } 
   }
   componentDidMount(){
@@ -34,22 +32,6 @@ class DayMealsRecomm extends React.Component {
     })
   }
   
-  slidePrevPage = () => {
-    const currentIndex = this.state.currentIndex - this.state.itemsInSlide
-    this.setState({ currentIndex })
-  }
-
-  slideNextPage = () => {
-    const { itemsInSlide, display: { length }} = this.state
-    let currentIndex = this.state.currentIndex + itemsInSlide
-    if (currentIndex > length) currentIndex = length
-
-    this.setState({ currentIndex })
-  }
-  handleOnSlideChange = (event) => {
-    const { itemsInSlide, display } = event
-    this.setState({ itemsInSlide, currentIndex: display })
-  }
 
   render(){
   var arr =this.state.result;
@@ -63,24 +45,9 @@ class DayMealsRecomm extends React.Component {
       )
     }
     return( 
-      <>
-        <div className='container'>
-        <AliceCarousel 
-        items={display}
-        responsive={this.responsive}
-        fadeOutAnimation={true}
-        mouseDragEnabled={true}
-        
-        disableAutoPlayOnAction={true}
-        onSlideChange={this.onSlideChange}
-        onSlideChanged={this.onSlideChanged}
-        />
-        <button onClick={this.slidePrevPage}>Prev Page</button>
-        <button onClick={this.slideNextPage}>Next Page</button>
-        </div>
-      
-        
-      </>
+      <div className='mealRecomendations'>
+        {display}
+      </div>
     )
   }
 }
