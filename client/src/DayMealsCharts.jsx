@@ -53,7 +53,7 @@ const DayMealsCharts = props => {
         <input type='date' value={props.date}/> {' '}
         <input type='submit' value='GO' />
       </form>
-      <XYPlot height={200} width={400} colorType="category" stroke="#f70" yType="ordinal">
+      <XYPlot height={200} width={400} colorType="category" yType="ordinal" margin={{left: 50}}>
         {/* <DiscreteColorLegend 
           items={[
             {title: "Goals"},
@@ -61,11 +61,11 @@ const DayMealsCharts = props => {
           ]} 
           style={{position: 'absolute', right: '25px', top: '70px'}}
         /> */}
-        <HorizontalBarSeries data={goalData} color="rgba(255,255,255,0)" cluster='nutri'/>
-        <HorizontalBarSeries data={mealsData}  color="#59b953" cluster='nutri'/>
+        <HorizontalBarSeries data={goalData} color="rgba(255,255,255,0)" cluster='nutri' stroke="#f70" style={{strokeWidth: 2}}/>
+        <HorizontalBarSeries data={mealsData}  color="#59b953" cluster='nutri' barWidth={0.72}/>
         {/* <XAxis tickValues={[1, 2, 3, 4, 5]}/> */}
-        <YAxis />
-        <XAxis />
+        <YAxis tickPadding={0.5} style={{ text:{fill:'black'} }}/>
+        <XAxis style={{ text:{fill:'black'} }}/>
       </XYPlot>
     </div>
   );
