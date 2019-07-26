@@ -12,9 +12,8 @@ body {
   display:flex;
 }
 .day-meals-container {
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
-  text-align: center;
+  /* grid-template-rows: 1fr 1fr 1fr;
+  display: grid; */
 }
 
 .App-header {
@@ -187,7 +186,7 @@ nav {
   display: flex;
   justify-content: space-around;
   flex-direction: row;
-  margin-top: 2%;
+  margin-top: 1%;
 }
 
 .meal-history-meals ul {
@@ -260,7 +259,7 @@ nav {
   justify-content: space-evenly;
 }
 #loadinggif {
-  margin-left: 0;
+  margin-left: 25%;
   text-align: center;
   height: 18vh;
   border-radius: 10px;
