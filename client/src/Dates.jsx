@@ -48,6 +48,12 @@ class Dates extends React.Component {
   render() {
     var name = this.props.user ? this.props.user.name : '';
     return (
+      <header className="App-header">
+        <nav>
+      <Link to='/'>Home</Link>
+      <Link to='/summary'>Profile</Link>
+      </nav>
+        <img id="header-img" src="/nutri-facts.png" alt=""/>
       <div className='main'>
 
         <ProfileBar 
@@ -79,12 +85,9 @@ class Dates extends React.Component {
           <div className="graph2">
             "This will generate another graph"
           </div>
-          <nav>
-          <Link to='/'>Home</Link>
-          <Link to='/summary'>Profile</Link>
-          </nav>
         </div>
       </div>
+      </header>
     )
   }
 }

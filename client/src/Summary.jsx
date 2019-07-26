@@ -123,16 +123,6 @@ class Summary extends React.Component {
           <p>Fiber: {this.state.fiber}g</p>
           <p>Carbs: {this.state.carbs}g</p>
         </div>
-        <form onSubmit={this.handleSubmit}>
-
-          <input onChange={this.handleInputChange} value={this.state.calories} type="text" name="calories" placeholder="Enter calories..."/>
-          <input onChange={this.handleInputChange} value={this.state.fat} type="text" name="fat" placeholder="Enter fat..."/>
-          <input onChange={this.handleInputChange} value={this.state.protein} type="text" name="protein" placeholder="Enter protein..."/>
-          <input onChange={this.handleInputChange} value={this.state.fiber} type="text" name="fiber" placeholder="Enter fiber..."/>
-          <input onChange={this.handleInputChange} value={this.state.carbs} type="text" name="carbs" placeholder="Enter carbs..."/> < br/>
-
-          <input type="submit"/>
-        </form>
         </div>
 
       </div>

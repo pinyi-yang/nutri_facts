@@ -14,6 +14,7 @@ body {
 .day-meals-container {
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
+  text-align: center;
 }
 
 .App-header {
