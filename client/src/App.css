@@ -120,7 +120,7 @@ nav {
   justify-content: space-evenly;
 }
 
-.meals-options-list-div,{
+.meals-options-list-div {
   height: 100%;
 }
 .meals-options-list, .pending-meal-list {
@@ -145,6 +145,7 @@ nav {
 }
 
 .message-div {
+  color: white;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -155,6 +156,10 @@ nav {
   /*text-align: center;*/
   padding-left: 20%;
 
+}
+
+.type {
+color: white;
 }
 
 .current  {
