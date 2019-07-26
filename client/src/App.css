@@ -47,7 +47,6 @@ body {
   box-sizing: border-box;
   border-radius: 5px;
   padding: 0.6em;
-  text-align: center;
   overflow: scroll;
   background: #dfdfdfb0;
 }
@@ -183,6 +182,7 @@ nav {
   display: flex;
   flex-direction: column;
   align-content: space-between;
+  text-align: center;
 }
 
 .foods-nutri-indicator {
@@ -201,7 +201,9 @@ nav {
   flex-direction: row;
   justify-content: space-evenly;
 }
-
+#loadinggif {
+  margin: auto;
+}
 .meals-options-list-div {
   height: 100%;
 }
@@ -257,7 +259,14 @@ nav {
 #options-nextpage-icon {
   right: -0.5%;
 }
-
+.pending-option-title {
+  background: lightgrey;
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 3px;
+  line-height: 130%;
+}
 .message-div {
   color: white;
   height: 100%;
@@ -265,6 +274,8 @@ nav {
   justify-content: center;
   align-items: center;
 }
+
+/* ================================================================================================================ */
 
 .dates form {
   /*text-align: center;*/
