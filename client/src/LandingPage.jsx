@@ -26,7 +26,7 @@ const LandingPage = props => {
           <div className="dev">
             <img id='profilePic' src="/profilePic.png" alt=""/>
             <h3>Pinyi Yang</h3>
-            <p>Web Developer</p>
+            <p>Lead Developer</p>
             <div>
               <a className="teamIcons" href="https://github.com/shadownova65" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
               <a className="teamIcons" href="https://www.linkedin.com/in/pinyi-yang/" target="_blank"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
@@ -35,7 +35,7 @@ const LandingPage = props => {
           <div className="dev">
             <img id='profilePic' src="/profilePic.png" alt=""/>
             <h3>Reid Miller</h3>
-            <p>CSS Champ</p>
+            <p>Web Developer</p>
             <div>
               <a className="teamIcons" href="https://github.com/rmiller999" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
               <a className="teamIcons" href="https://www.linkedin.com/in/reidmiller1/" target="_blank"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
@@ -61,7 +61,7 @@ const LandingPage = props => {
           </div>
         </div>
         <footer>
-          
+
         </footer>
         </div>
     </div>
