@@ -1,7 +1,7 @@
 import React from 'react';
 import MealOptions from './MealOptions';
 import axios from 'axios';
-
+import MealOptionIndicator from './MealOptionIndicator';
 
 class AddMealForm extends React.Component {
   constructor(props) {
@@ -12,11 +12,15 @@ class AddMealForm extends React.Component {
       type: '',
       options: [],
       message: '',
+      optionsViewPort: 0,
+      mouseOnOption: null
     }
     this.handleTypeChange = this.handleTypeChange.bind(this);
     this.handleDishesChange = this.handleDishesChange.bind(this);
     this.handleFoodsChange = this.handleFoodsChange.bind(this);
     this.handleShowMeal = this.handleShowMeal.bind(this);
+    this.handleHoverOption = this.handleHoverOption.bind(this);
+    this.handleOffOption = this.handleOffOption.bind(this);
   }
 
   handleTypeChange(e) {
@@ -41,6 +45,7 @@ class AddMealForm extends React.Component {
 
   handleShowMeal(e) {
     e.preventDefault();
+    console.log('get meals from api');
     this.setState({
       message: 'Loading Data'
     })
@@ -83,10 +88,46 @@ class AddMealForm extends React.Component {
       })
     }
 
+    
+  }
+  
+  handleHoverOption(i) {
+    let newOption = this.state.options[i];
+    this.setState({
+      mouseOnOption: newOption
+    })
+  }
 
+  handleOffOption() {
+    this.setState({
+      mouseOnOption: null
+    })
   }
 
   render() {
+
+    if (this.state.dishes || this.state.foods || this.state.options.length>0) {
+      var content = (
+        this.state.message === 'Loading Data' ? 
+          <img src='./gif/loading.gif' alt={this.state.message} id='loadinggif'/> :
+          <div className='meals-options-container'> 
+            <MealOptions options={this.state.options.slice(this.state.optionsViewPort, this.state.optionsViewPort+4)} 
+                          handleMealOptionSelect={this.props.handleMealOptionSelect}
+                          type={this.state.type}
+                          handleHoverOption={this.handleHoverOption}
+                          handleOffOption={this.handleOffOption}
+                          />
+            <MealOptionIndicator 
+              option={this.state.mouseOnOption} 
+            />
+          </div>
+      )
+    } else {
+      content = <div className='message-div'>
+        input foods name or dish to continue, click to add to your pending list
+      </div>
+    }
+
     return (
       <div className='info-sub' id='add-meal-container'>
         <div className='add-meal-form'>
@@ -118,14 +159,23 @@ class AddMealForm extends React.Component {
             </div>
           </form>
         </div>
+        
         <div className='meals-options-list-div'>
-          {this.state.message === 'Loading Data' ? 
-            <img src='./gif/loading.gif' alt={this.state.message} id='loadinggif'/> : 
-            <MealOptions options={this.state.options} 
-                          handleMealOptionSelect={this.props.handleMealOptionSelect}
-                          type={this.state.type}
-                          /> 
-          }
+          {content}
+          {/* {this.state.message === 'Loading Data' ? 
+            <img src='./gif/loading.gif' alt={this.state.message} id='loadinggif'/> :
+            <div className='meals-options-container'> 
+              <MealOptions options={this.state.options.slice(this.state.optionsViewPort, this.state.optionsViewPort+4)} 
+                            handleMealOptionSelect={this.props.handleMealOptionSelect}
+                            type={this.state.type}
+                            handleHoverOption={this.handleHoverOption}
+                            handleOffOption={this.handleOffOption}
+                            />
+              <MealOptionIndicator 
+                option={this.state.mouseOnOption} 
+              />
+            </div>
+          } */}
         </div>
       </div>
     );

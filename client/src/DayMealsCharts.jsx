@@ -17,8 +17,8 @@ const DayMealsCharts = props => {
   let mealsData = [
     {y: 1, x: 0},
     {y: 2, x: 0},
-    {y: 3, x: 50},
-    {y: 4, x: 50},
+    {y: 3, x: 0},
+    {y: 4, x: 0},
     {y: 5, x: 0}
   ]; 
    //  ['100kcal', 'Protain', 'Fiber', 'Carbs', 'Fat']

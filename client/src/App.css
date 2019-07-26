@@ -1,8 +1,3 @@
-
-/* * {
-  border: black solid 0.5px;
-} */
-
 .App {
   text-align: center;
 }
@@ -31,7 +26,11 @@
   height: 16vh;
   text-align: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.7)), url('/landingPage.jpg');
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 #header-img {
@@ -45,6 +44,11 @@
   height: 84vh;
   display: grid;
   grid-template-columns: 1fr 4fr;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)), url('/landingPage.jpg');
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .info {
@@ -54,12 +58,13 @@
 
 .rv-xy-plot {
   text-align: center;
-  padding-left: 35em;
 }
 
 .profileBar {
-  background-color: lightblue;
+ 
+  background-color: rgba(194, 194, 194, 0.604);
 } 
+
 
 .sidebar, a {
   display: block;
@@ -101,7 +106,6 @@
 }
 
 nav {
-  background: white;
   display: flex;
   justify-content: space-around;
   min-width: 300px;
@@ -128,18 +132,18 @@ nav {
   border-radius: 15px;
   padding: 1px;
 }
+.meals-options-list-div{
+  height: 100%;
+}
 .meals-options-list, .pending-meal-list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   height:127px;
   border-radius: 15px;
-  
-  
-  
-  
 }
 
-.meals-options-container {
+.meals-options-container, .pending-meal-container {
+  height: 100%;
   display: grid;
   grid-template-columns: 4fr 1fr;
 }
@@ -152,15 +156,28 @@ nav {
 
   
   
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.message-div {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .dates form {
   /*text-align: center;*/
   padding-left: 20%;
+
 }
-.current {
+
+.current  {
 display: inline-block;
 margin: 20px;
+
 }
 
 .end {
@@ -177,6 +194,41 @@ margin: 20px;
 .alice-carousel{
   text-align: center;
 }
+
+
+input[type=date] {
+border: 3px solid black;
+border-radius: 5px;
+width: 85%;
+height: 30px;
+}
+
+input[type=submit] {
+background-color: #30a80f;
+border-radius: 12px;
+border: none;
+color: white;
+padding: 16px 32px;
+text-decoration: none;
+margin: 4px 2px;
+cursor: pointer;
+}
+
+select {
+  border: 3px solid black;
+  border-radius: 5px;
+  width: 85%;
+  height: 30px;
+}
+
+input[type=text] {
+  border: 3px solid black;
+  border-radius: 5px;
+  width: 85%;
+  height: 30px;
+}
+
+
 .imgbox {
   text-align: center;
   display: grid;
@@ -207,6 +259,7 @@ margin: 20px;
 display: inline-block;
 text-align: center;
 padding-left: 20%;
+justify-content: center
 }
 
 #landingPageMain *  {
@@ -230,12 +283,6 @@ padding-left: 20%;
 
 #landingPage {
   background-image: linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)), url('/landingPage.jpg') ;
-  /* position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0; */
-  /* z-index: 3; */
   height: 100vh;
   background-position: center;
   background-size: cover;
@@ -268,12 +315,12 @@ padding-left: 20%;
   color: #292828;
 }
 
-.landingSignup, .loginBtn {
-  background-color: #30a80f	;
+.landingSignup, .loginBtn, .signupBtn, .goalSubmit {
+  background-color: #30a80f;
   color: #292828;
 }
 
-.landingLogin, .landingSignup, .loginBtn {
+.landingLogin, .landingSignup, .loginBtn, .signupBtn, .goalSubmit {
   display: inline-block;
   padding: 1em 1.5em;
   position: relative;
@@ -284,11 +331,19 @@ padding-left: 20%;
   border-radius: 10px;
 }
 
-.landingLogin, .loginBtn, a:hover {
+.landingLogin, .loginBtn, .signupBtn, .goalSubmit, a:hover {
   cursor: pointer;
 }
 
-.landingLogin, .landingSignup, a:active {
+.landingSignup:hover, .loginBtn:hover, .signupBtn:hover, .goalSubmit:hover {
+  background-color: #2b990d;
+}
+
+.landingLogin:hover {
+  background-color: #b6b6b6;
+}
+
+.landingLogin, .landingSignup, .loginBtn, .signupBtn, a:active {
   box-shadow: none;
   top: 5px;
 }
@@ -313,6 +368,8 @@ padding-left: 20%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-color: #F4F4F4;
+  padding: 50px;
 }
 
 /* .dev:hover {
@@ -337,7 +394,19 @@ i, .teamIcons {
   font-size: 35px !important;
 }
 
-/* Login page===============================*/
+.fa-linkedin-square {
+  color: #4875B4;
+}
+
+.fa-github {
+  color: black;
+}
+
+footer {
+  background-color: #292828;
+}
+
+/* Login/Signup page===============================*/
 .Login, .Signup {
   border: solid #555 3px;
   border-radius: 15px;
@@ -359,14 +428,14 @@ i, .teamIcons {
   justify-content: center;
 }
 
-.Login input[type=email] input[type=password] {
+.Login input[type=email], input[type=password] {
   border: 3px solid #555;
   border-radius: 5px;
   width: 75%;
   height: 25px;
 }
 
-.Signup input[type=email] input[type=password] input[type=text] {
+.Signup input[type=email], .Signup input[type=password], .Signup input[type=text] {
   border: 3px solid #555;
   border-radius: 5px;
   width: 75%;

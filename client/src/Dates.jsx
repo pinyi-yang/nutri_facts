@@ -14,8 +14,10 @@ class Dates extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-       currentdate: Number,
-       enddate: Number
+        goal: null,
+        meals: [],
+       currentdate: '',
+       enddate: ''
       }
       this.handleInputChange = this.handleInputChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,16 +31,15 @@ class Dates extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    axios.post(`/user/${this.props.user._id}`, {
-      currentdate: this.state.currentdate,
-      enddate: this.state.enddate
-    }).then(res => {
-      if (res.data.type === 'error') {
-        this.setState({
-          currentdate: '',
-          enddate: '',
-        })
-      } 
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('mernToken');
+    axios.get(`/api/users/${this.props.user._id}/meals?start=${this.state.currentdate}&end=${this.state.enddate}`).then(res => {
+      let {meals, goals, currentdate, enddate} = res.data;
+      this.setState({
+        meals,
+        goal: goals[goals.length-1],
+        currentdate,
+        enddate
+      })
     })
   }
 
@@ -61,7 +62,7 @@ class Dates extends React.Component {
             <div className ="end">
               <input onChange={this.handleInputChange} type="date" name="enddate" placeholder="Enter end point date..."/>
             </div>
-            <input type="submit"/>
+            <input type="submit" value="submit"/>
 
           </form>
           <div className="dateoutput">
@@ -77,7 +78,10 @@ class Dates extends React.Component {
           <div className="graph2">
             "This will generate another graph"
           </div>
+          <nav>
           <Link to='/'>Home</Link>
+          <Link to='/summary'>Profile</Link>
+          </nav>
         </div>
       </div>
     )

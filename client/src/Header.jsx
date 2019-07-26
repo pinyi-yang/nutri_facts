@@ -16,6 +16,7 @@ const Header = props => {
       var userLogin = (
         <nav>
           <Link to='/' onClick={props.logout}>Logout</Link>
+          <Link to='/dates'> Set Date</Link>
           <Link to='/summary'>Profile</Link>
         </nav>
       )
@@ -29,7 +30,7 @@ const Header = props => {
     }
     return (
       <header className="App-header">
-        <a><img id="header-img" src="/nutri-facts.png" alt=""/></a>
+        <img id="header-img" src="/nutri-facts.png" alt=""/>
         {userLogin}
         {/* <nav> */}
           {/* <button onClick={props.logout}>Logout</button> */}
