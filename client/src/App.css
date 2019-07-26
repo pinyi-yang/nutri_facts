@@ -14,7 +14,6 @@ body {
 .day-meals-container {
   /* grid-template-rows: 1fr 1fr 1fr;
   display: grid; */
-  text-align: center;
 }
 
 .App-header {
@@ -260,7 +259,7 @@ nav {
   justify-content: space-evenly;
 }
 #loadinggif {
-  margin-left: 0;
+  margin-left: 25%;
   text-align: center;
   height: 18vh;
   border-radius: 10px;
