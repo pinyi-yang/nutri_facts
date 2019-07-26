@@ -53,9 +53,9 @@ class MealHistroyMeals extends React.Component {
     
     return (
       <>
-        <img src='./img/last_page.png' id='history-lastpage-icon' alt='last page' onClick={this.handleLastPageClick}/>
+        <img src='./img/last_page.png' className='page-icon' id='history-lastpage-icon' alt='last page' onClick={this.handleLastPageClick}/>
         {content}
-        <img src='./img/next_page.png' id='history-nextpage-icon' alt='last page' onClick={this.handleNextPageClick}/>
+        <img src='./img/next_page.png' className='page-icon' id='history-nextpage-icon' alt='last page' onClick={this.handleNextPageClick}/>
       </>
     )
   }

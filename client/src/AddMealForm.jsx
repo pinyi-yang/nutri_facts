@@ -12,7 +12,6 @@ class AddMealForm extends React.Component {
       type: '',
       options: [],
       message: '',
-      optionsViewPort: 0,
       mouseOnOption: null
     }
     this.handleTypeChange = this.handleTypeChange.bind(this);
@@ -111,7 +110,7 @@ class AddMealForm extends React.Component {
         this.state.message === 'Loading Data' ? 
           <img src='./gif/loading.gif' alt={this.state.message} id='loadinggif'/> :
           <div className='meals-options-container'> 
-            <MealOptions options={this.state.options.slice(this.state.optionsViewPort, this.state.optionsViewPort+4)} 
+            <MealOptions options={this.state.options} 
                           handleMealOptionSelect={this.props.handleMealOptionSelect}
                           type={this.state.type}
                           handleHoverOption={this.handleHoverOption}
