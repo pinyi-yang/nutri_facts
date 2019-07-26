@@ -132,7 +132,7 @@ class AddMealForm extends React.Component {
       <div className='info-sub' id='add-meal-container'>
         <div className='add-meal-form'>
           <form onSubmit={this.handleShowMeal}>
-            <div>
+            <div className="type">
               Type: 
               <select name='type' onChange={this.handleTypeChange}>
                 <option value=''>--</option>
@@ -144,14 +144,14 @@ class AddMealForm extends React.Component {
               </select>
             </div>
 
-            <div>
+            <div className="type">
               Add Foods:
               <input type='text' name='foods' value={this.state.foods} onChange={this.handleFoodsChange} placeholder='names for food'/>
               {' '}
               <input type='submit' value='SHOW' />
             </div>
 
-            <div>
+            <div className="type">
               Add a Dish:
               <input type='text' name='dish' value={this.state.dishes} onChange={this.handleDishesChange} placeholder='name for dish' />
               {' '}

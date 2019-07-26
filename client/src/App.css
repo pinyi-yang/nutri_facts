@@ -38,7 +38,6 @@ body {
   height: 85vh;
   display: grid;
   grid-template-columns: 1fr 4fr;
-  /* background-image: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)), url('/landingPage.jpg'); */
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
@@ -171,6 +170,7 @@ nav {
 }
 
 .message-div {
+  color: white;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -181,6 +181,10 @@ nav {
   /*text-align: center;*/
   padding-left: 20%;
 
+}
+
+.type {
+color: white;
 }
 
 .current  {
@@ -220,7 +224,7 @@ cursor: pointer;
   height: 30px;
 } */
 
-/* input[type=text] {
+/* input[type=text] 
   border: 3px solid black;
   border-radius: 5px;
   width: 85%;
