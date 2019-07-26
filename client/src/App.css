@@ -239,6 +239,8 @@ nav {
   display: grid;
   grid-template-columns: 4fr 1fr;
   border: black solid 2px;
+  border-radius: 5px;
+  padding: 3px;
 }
 
 .meals-option, .pending-option {
