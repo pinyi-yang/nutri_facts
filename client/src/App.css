@@ -207,11 +207,47 @@ nav {
   text-align: center;
 }
 
-.foods-nutri-indicator {
+.meal-history-meal-single .foods-nutri-indicator {
   width: 180px;
   min-height: 100px;
   margin:auto;
 }
+
+.deleteMeal {
+  left: 88%;
+	position: relative;
+	width: 23px;
+	height: 23px;
+	background-color: #ff5148a9;
+	border-radius: 50%;
+}
+
+.deleteMeal::before, .deleteMeal::after {
+	position: absolute;
+	top: 9px;
+	left: 4.5px;
+	width: 13px;
+	height: 4px;
+	content: "";
+	background-color: black;
+	display: none;
+}
+
+.deleteMeal::before {
+	-ms-transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+
+.deleteMeal::after {
+	-ms-transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+.deleteMeal:hover { cursor: pointer; }
+
+.deleteMeal:hover::before, .deleteMeal:hover::after { display: block; }
 
 /* * here is for AddMealForm.jsx ========================================*/
 #add-meal-container {

@@ -153,16 +153,6 @@ app.put("/meals/:id", (req,res) => {
     });
   });
 
-app.delete("/meals/:id", (req,res) => {
-  Meal.findByIdAndRemove(req.params.id, function(err){
-
-      if (err) {
-        res.json(err);
-      }
-      res.json({message: "Delete"})
-  })
-})
-
 // creates goal for a specific user
 app.post('/user/:uid/goals', (req,res) => {
   User.findById(req.params.uid).populate('goals').exec( (err, user) => {

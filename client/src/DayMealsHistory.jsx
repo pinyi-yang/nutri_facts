@@ -9,7 +9,7 @@ const DayMealsHistory = props => {
     console.log(meals);
     var content = (
       <div className='meal-history-meals'>
-        <MealHistroyMeals meals={meals}/>
+        <MealHistroyMeals meals={meals} deleteMeal={props.deleteMeal}/>
       </div>
     )
   } else {
