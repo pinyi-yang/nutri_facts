@@ -27,7 +27,7 @@ const DayMealsCharts = props => {
      console.log(goal);
      let meals = props.meals
      goalData = [
-       {y: 1, x: goal.calories},
+       {y: 1, x: goal.calories, x1:50},
        {y: 2, x: goal.protein},
        {y: 3, x: goal.fiber},
        {y: 4, x: goal.fat},
@@ -44,7 +44,7 @@ const DayMealsCharts = props => {
        })
      })
     //  console.log(meals);
-    //  console.log(mealsData);
+     console.log(mealsData);
    }
         
   return (
@@ -53,7 +53,7 @@ const DayMealsCharts = props => {
         <input type='date' value={props.date}/> {' '}
         <input type='submit' value='GO' />
       </form>
-      <XYPlot height={200} width={400} stackBy='x'>
+      <XYPlot height={200} width={400} colorType="literal" stroke="#f70">
         <DiscreteColorLegend 
           items={[
             {title: "Goals"},
@@ -62,8 +62,8 @@ const DayMealsCharts = props => {
           style={{position: 'absolute', right: '25px', top: '70px'}}
 
         />
-        <HorizontalBarSeries data={goalData} />
-        <HorizontalBarSeries data={mealsData} />
+        <HorizontalBarSeries data={goalData} color="rgba(255,255,255,0)"/>
+        <HorizontalBarSeries data={mealsData}  color="#59b953"/>
         {/* <XAxis tickValues={[1, 2, 3, 4, 5]}/> */}
         <YAxis tickFormat={v => yticks[v]}/>
         <XAxis />

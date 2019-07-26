@@ -60,12 +60,17 @@ class Home extends React.Component {
 
   handEnjoyMealClick() {
     if (this.state.pendingMeal.length > 0) {
-      let newmeal = this.state.pendingMeal.slice();
+      let foods = this.state.pendingMeal.slice();
       let mealscopy = this.state.meals.slice();
       let type = this.state.type;
-      mealscopy.push({food: newmeal});
+      let newmeal = {
+        food: foods,
+        type: type
+      }
+      console.log(newmeal);
+      mealscopy.push(newmeal);
       axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('mernToken');
-      axios.post(`/api/users/${this.props.user._id}/meals`, {newmeal, type}).then(res => {
+      axios.post(`/api/users/${this.props.user._id}/meals`, {foods, type}).then(res => {
         console.log('added new meal');
         this.setState({
           meals: mealscopy,
