@@ -61,21 +61,26 @@ router.post('/dishsearch', (req, res) => {
   console.log('prepare fns to get foods and dishes from API', APIUrl);
   axios.get(APIUrl).then(function(dishdata) {
     console.log('get dishes from API', dishdata.data[0]);
-
-    let dishes = dishdata.data.hits.map(dish => (
-      {
+    
+    let dishes = dishdata.data.hits.map(dish => {
+      let {ENERC_KCAL,FAT,CHOCDF,FIBTG,PROCNT} = dish.recipe.totalNutrients;
+      let data = {ENERC_KCAL,FAT,CHOCDF,FIBTG,PROCNT};
+      let nutrients = {};
+      for (let key in data) {
+        if (data[key]) {
+          nutrients[key] = data[key].quantity;
+        } else {
+          nutrients[key] = 0;
+        }
+      }
+      
+      return {
         name: dish.recipe.label,
-        nutirents: {
-          ENERC_KCAL: dish.recipe.totalNutrients.ENERC_KCAL.quantity,
-          FAT: dish.recipe.totalNutrients.FAT.quantity,
-          CHOCDF: dish.recipe.totalNutrients.CHOCDF.quantity,
-          FIBTG: dish.recipe.totalNutrients.FIBTG.quantity,
-          PROCNT: dish.recipe.totalNutrients.PROCNT.quantity
-        },
+        nutrients,
         image: dish.recipe.image,
         url: dish.recipe.url
       }
-    ))
+    })
     
     res.json(dishes)
   })
