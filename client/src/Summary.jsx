@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import ProfileBar from './ProfileBar';
+import Header from './Header';
 import jwt from 'jsonwebtoken'
 import {
   BrowserRouter as Router,
@@ -95,17 +96,17 @@ class Summary extends React.Component {
     // let carbs = this.state.goal ? this.setState({carbs: this.state.goal.carbs}): '';
     var goals
     return (
+      
       <div className='main'>
-
       <ProfileBar 
                 user={name}
                 handNewMealSubmit={this.handNewMealSubmit}
                 handleAddMealClick={this.handleAddMealClick}
                 />
-      <div className="summaryPage">
+      <div id="profilePage" className='info day-meals-container'>
         <p>Hello, {name}</p>
         <h3>Set a Goal:</h3>
-        <p>Calories: {this.state.calories} Fat: {this.state.fat} Protein: {this.state.protein} Fiber: {this.state.fiber}</p>
+        {/* <p>Calories: {this.state.calories} Fat: {this.state.fat} Protein: {this.state.protein} Fiber: {this.state.fiber}</p> */}
         <form onSubmit={this.handleSubmit}>
           <input onChange={this.handleInputChange} value={this.state.calories} type="text" name="calories" placeholder="Enter calories..."/>
           <input onChange={this.handleInputChange} value={this.state.fat} type="text" name="fat" placeholder="Enter fat..."/>
@@ -123,10 +124,6 @@ class Summary extends React.Component {
         </div>
         </div>
 
-        <nav>
-          <Link to='/'>Home</Link> 
-          <Link to='/dates'>Set Date</Link>
-        </nav>
       </div>
     )
   }
