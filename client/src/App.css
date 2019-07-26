@@ -12,8 +12,8 @@ body {
   display:flex;
 }
 .day-meals-container {
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
+  /* grid-template-rows: 1fr 1fr 1fr;
+  display: grid; */
   text-align: center;
 }
 
@@ -187,7 +187,7 @@ nav {
   display: flex;
   justify-content: space-around;
   flex-direction: row;
-  margin-top: 2%;
+  margin-top: 1%;
 }
 
 .meal-history-meals ul {
