@@ -27,7 +27,6 @@ const PendingMeal = props => {
 
   return(
     <div className='pending-meal-div'>
-      
       {content}
     </div>
 
