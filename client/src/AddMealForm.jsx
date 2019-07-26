@@ -104,7 +104,6 @@ class AddMealForm extends React.Component {
   }
 
   render() {
-
     if (this.state.dishes || this.state.foods || this.state.options.length>0) {
       var content = (
         this.state.message === 'Loading Data' ? 

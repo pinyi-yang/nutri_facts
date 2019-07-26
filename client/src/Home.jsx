@@ -26,6 +26,8 @@ class Home extends React.Component {
     this.handlePendingOptionRemove = this.handlePendingOptionRemove.bind(this);
     this.handEnjoyMealClick = this.handEnjoyMealClick.bind(this);
     this.deleteMeal = this.deleteMeal.bind(this);
+    this.handleDateChangeSubmit = this.handleDateChangeSubmit.bind(this);
+    this.handleDateChange = this.handleDateChange.bind(this);
   }
 
   handleAddMealClick() {
@@ -102,6 +104,21 @@ class Home extends React.Component {
     
   }
 
+  handleDateChangeSubmit(e) {
+    e.preventDefault();
+    console.log(this.state.pendingdate);
+    let newdate = this.state.pendingdate
+    this.setState({
+      date: newdate
+    })
+  }
+​
+  handleDateChange(e) {
+    this.setState({
+      pendingdate: e.target.value
+    })
+  } 
+
   componentDidMount() {
     console.log('get meal from user');
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('mernToken');
@@ -138,7 +155,7 @@ class Home extends React.Component {
     } else {
       infosub = (
 
-          <DayMealsHistory meals={this.state.meals} user={this.props.user} deleteMeal={this.deleteMeal}/>
+          <DayMealsHistory date={this.state.date} meals={this.state.meals} user={this.props.user} deleteMeal={this.deleteMeal}/>
       )
     }
     return (
@@ -152,6 +169,10 @@ class Home extends React.Component {
 
 
         <div className='info day-meals-container'>
+          <form onSubmit={this.handleDateChangeSubmit}>
+            <input type='date' value={this.state.pendingdate} onChange={this.handleDateChange}/> {' '}
+            <input type='submit' value='GO' />
+          </form>
           <DayMealsCharts goal={this.state.goal} meals={this.state.meals} date={this.state.date}/>
           {infosub}
         </div>

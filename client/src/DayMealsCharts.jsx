@@ -48,11 +48,6 @@ const DayMealsCharts = props => {
    }
         
   return (
-    <div className='day-meals-chart'>
-      <form>
-        <input type='date' value={props.date}/> {' '}
-        <input type='submit' value='GO' />
-      </form>
       <XYPlot height={200} width={400} colorType="category" yType="ordinal" margin={{left: 50}}>
         {/* <DiscreteColorLegend 
           items={[
@@ -68,7 +63,6 @@ const DayMealsCharts = props => {
         <YAxis tickPadding={0.5} style={{ text:{fill:'black'}, line: {stroke: 'grey'} }}/>
         <XAxis style={{ text:{fill:'black'}, line: {stroke: 'grey'} }}/>
       </XYPlot>
-    </div>
   );
 }
   
