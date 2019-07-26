@@ -1,5 +1,6 @@
 import React from 'react';
 import FoodsNutriIndicator from './FoodsNutriIndicator';
+import axios from 'axios';
 
 class MealHistroyMeals extends React.Component {
   constructor(props) {
@@ -36,10 +37,11 @@ class MealHistroyMeals extends React.Component {
     let viewpoint = this.state.viewpoint;
     let meals = this.props.meals.slice(viewpoint, viewpoint+4);
     
-    let content = meals.map(meal => {
+    let content = meals.map((meal, i) => {
       console.log(meal.type);
       return (
         <div className='meal-history-meal-single'>
+          <button className="deleteMeal" id={i} key={i} onClick={() => this.props.deleteMeal(i)}></button>
           <b>{meal.type ? meal.type : 'random'}</b>
           <ul>
             {meal.food.map(item => (
