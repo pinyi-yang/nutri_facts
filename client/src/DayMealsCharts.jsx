@@ -15,11 +15,11 @@ const DayMealsCharts = props => {
   const yticks = ['', '100kcal', 'Protain', 'Fiber', 'Fat', 'Carbs']
   let goalData=[];
   let mealsData = [
-    {y: 1, x: 0},
-    {y: 2, x: 0},
-    {y: 3, x: 0},
-    {y: 4, x: 0},
-    {y: 5, x: 0}
+    {y: '100kcal', x: 0},
+    {y: 'Protain', x: 0},
+    {y: 'Fiber', x: 0},
+    {y: 'Fat', x: 0},
+    {y: 'Carbs', x: 0}
   ]; 
    //  ['100kcal', 'Protain', 'Fiber', 'Carbs', 'Fat']
    if (props.goal && props.meals) {
@@ -27,11 +27,11 @@ const DayMealsCharts = props => {
      console.log(goal);
      let meals = props.meals
      goalData = [
-       {y: 1, x: goal.calories},
-       {y: 2, x: goal.protein},
-       {y: 3, x: goal.fiber},
-       {y: 4, x: goal.fat},
-       {y: 5, x: goal.carbs}
+       {y: '100kcal', x: goal.calories, x1:50},
+       {y: 'Protain', x: goal.protein},
+       {y: 'Fiber', x: goal.fiber},
+       {y: 'Fat', x: goal.fat},
+       {y: 'Carbs', x: goal.carbs}
      ];
 
      meals.forEach(function(meal) {
@@ -43,7 +43,7 @@ const DayMealsCharts = props => {
          }
        })
      })
-     console.log(meals);
+    //  console.log(meals);
      console.log(mealsData);
    }
         
@@ -53,20 +53,20 @@ const DayMealsCharts = props => {
         <input type='date' value={props.date}/> {' '}
         <input type='submit' value='GO' />
       </form>
-      <XYPlot height={200} width={400} stackBy='x'>
-        <DiscreteColorLegend 
+      <XYPlot height={200} width={400} colorType="category" yType="ordinal" margin={{left: 50}}>
+        {/* <DiscreteColorLegend 
           items={[
             {title: "Goals"},
             {title: "Meals"}
           ]} 
           style={{position: 'absolute', right: '25px', top: '70px'}}
-
-        />
-        <HorizontalBarSeries data={goalData} />
-        <HorizontalBarSeries data={mealsData} />
+        /> */}
+        <HorizontalBarSeries data={goalData} color="rgba(255,255,255,0)" cluster='nutri' stroke="#f70" style={{strokeWidth: 2}}/>
+        <HorizontalBarSeries data={mealsData.slice(0,-2)}  color="#59b953" cluster='nutri' barWidth={0.72}/>
+        <HorizontalBarSeries data={mealsData.slice(-2)}  color='red' cluster='nutri' barWidth={0.72}/>
         {/* <XAxis tickValues={[1, 2, 3, 4, 5]}/> */}
-        <YAxis tickFormat={v => yticks[v]}/>
-        <XAxis />
+        <YAxis tickPadding={0.5} style={{ text:{fill:'black'}, line: {stroke: 'grey'} }}/>
+        <XAxis style={{ text:{fill:'black'}, line: {stroke: 'grey'} }}/>
       </XYPlot>
     </div>
   );

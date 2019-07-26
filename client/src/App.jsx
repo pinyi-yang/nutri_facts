@@ -116,7 +116,10 @@ class App extends React.Component {
           <Signup {...props} liftToken={this.liftToken}/>
         )} />
         <Route exact path="/summary" render={(props) => (
-          <Summary {...props} user={this.state.user} />
+          <>
+            <Header logout={this.logout} user={user}/>          
+            <Summary {...props} user={this.state.user} />
+          </>
         )} />
         <Route exact path="/dates" render={(props) => (
           <Dates {...props} user={user} liftToken={this.LiftToken} />

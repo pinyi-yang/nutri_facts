@@ -130,7 +130,7 @@ router.get('meals/:id', (req,res) => {
 router.post('/users/:uid/meals', (req,res) => {
   console.log('get to back end to add meal');
   Meal.create({
-    food: req.body.newmeal,
+    food: req.body.foods,
     dish: [],
     type: req.body.type,
     date: moment(),

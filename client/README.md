@@ -12,7 +12,7 @@ Nutri-Facts is a user-friendly app designed to help you lose weight and improve 
 ![Login/Sign up](public/landing.jpg)
 ![Bottom of login/Signup](public/landingpagefooter.jpg)
 ![alt Text](public/loginpage.png)
-![Home page](public/homepage.png)
+![Home page](public/Homepage1.png)
 
 Sources: 
 [StackOverFlow] (https://stackoverflow.com/)
