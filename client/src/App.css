@@ -121,6 +121,8 @@ nav a:hover {
 
 #profilePage {
   display: block;
+  text-align: center;
+
 }
 
 nav {
@@ -205,11 +207,47 @@ nav {
   text-align: center;
 }
 
-.foods-nutri-indicator {
+.meal-history-meal-single .foods-nutri-indicator {
   width: 180px;
   min-height: 100px;
   margin:auto;
 }
+
+.deleteMeal {
+  left: 88%;
+	position: relative;
+	width: 23px;
+	height: 23px;
+	background-color: #ff5148a9;
+	border-radius: 50%;
+}
+
+.deleteMeal::before, .deleteMeal::after {
+	position: absolute;
+	top: 9px;
+	left: 4.5px;
+	width: 13px;
+	height: 4px;
+	content: "";
+	background-color: black;
+	display: none;
+}
+
+.deleteMeal::before {
+	-ms-transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+
+.deleteMeal::after {
+	-ms-transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+.deleteMeal:hover { cursor: pointer; }
+
+.deleteMeal:hover::before, .deleteMeal:hover::after { display: block; }
 
 /* * here is for AddMealForm.jsx ========================================*/
 #add-meal-container {
@@ -222,7 +260,10 @@ nav {
   justify-content: space-evenly;
 }
 #loadinggif {
-  margin: auto;
+  margin-left: 0;
+  text-align: center;
+  height: 18vh;
+  border-radius: 10px;
 }
 .meals-options-list-div {
   height: 100%;
@@ -240,6 +281,8 @@ nav {
   display: grid;
   grid-template-columns: 4fr 1fr;
   border: black solid 2px;
+  border-radius: 5px;
+  padding: 3px;
 }
 
 .meals-option, .pending-option {
@@ -273,11 +316,11 @@ nav {
 }
 
 #options-lastpage-icon {
-  left: -0.5%;
+  left: -0.1%;
 }
 
 #options-nextpage-icon {
-  right: -0.5%;
+  right: -0.1%;
 }
 .pending-option-title {
   background: lightgrey;
@@ -287,13 +330,28 @@ nav {
   border-radius: 3px;
   line-height: 130%;
 }
+
+#pending-lastpage-icon, #pending-nextpage-icon {
+  top: 30%;
+  width: 32px;
+}
+
+#pending-lastpage-icon {
+  left: -0.1%;
+}
+
+#pending-nextpage-icon {
+  right: -0.1%;
+}
+
 .message-div {
-  color: white;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+
 
 /* ================================================================================================================ */
 
@@ -303,9 +361,9 @@ nav {
 
 }
 
-.type {
+/* .type {
 color: white;
-}
+} */
 
 .current  {
 display: inline-block;
@@ -410,9 +468,6 @@ justify-content: center
   background-attachment: fixed;
 }
 
-#loadinggif {
-  height: 20vh;
-}
 #landing {
   display: block;
   width: 1170px;

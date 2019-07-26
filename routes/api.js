@@ -126,6 +126,15 @@ router.get('meals/:id', (req,res) => {
   })
 });
 
+router.delete("/meals/:id", (req,res) => {
+  Meal.findByIdAndRemove(req.params.id, function(err){
+
+      if (err) {
+        res.json(err);
+      }
+      res.json({message: "Delete"})
+  })
+})
 
 router.post('/users/:uid/meals', (req,res) => {
   console.log('get to back end to add meal');
@@ -139,7 +148,7 @@ router.post('/users/:uid/meals', (req,res) => {
     User.findById(req.params.uid, (err, user) => {
       user.meals.push(meal._id);
       user.save();
-      res.json(user);
+      res.json(meal);
       })
     })
 })

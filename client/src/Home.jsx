@@ -25,6 +25,7 @@ class Home extends React.Component {
     this.handleMealOptionSelect = this.handleMealOptionSelect.bind(this);
     this.handlePendingOptionRemove = this.handlePendingOptionRemove.bind(this);
     this.handEnjoyMealClick = this.handEnjoyMealClick.bind(this);
+    this.deleteMeal = this.deleteMeal.bind(this);
   }
 
   handleAddMealClick() {
@@ -68,10 +69,10 @@ class Home extends React.Component {
         type: type
       }
       console.log(newmeal);
-      mealscopy.push(newmeal);
       axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('mernToken');
       axios.post(`/api/users/${this.props.user._id}/meals`, {foods, type}).then(res => {
-        console.log('added new meal');
+        console.log('added new meal', res.data);
+        mealscopy.push(res.data)
         this.setState({
           meals: mealscopy,
           pendingMeal: [],
@@ -80,6 +81,25 @@ class Home extends React.Component {
         })
       })
     }
+  }
+
+  deleteMeal(index) {
+    let mealscopy = this.state.meals.slice();
+    // //todo take meal out of db
+    console.log('delete meal', index)
+    console.log(`take meal ${this.state.meals[index]._id}`)
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('mernToken');
+    axios.delete(`/api/meals/${this.state.meals[index]._id}`).then(res => {
+      console.log(res.data)
+    })
+    
+    //todo take meal out of state.meals
+      //? meals is array >>> take out an item from array
+    mealscopy.splice(index, 1);
+    this.setState({
+      meals: mealscopy
+    })
+    
   }
 
   componentDidMount() {
@@ -118,7 +138,7 @@ class Home extends React.Component {
     } else {
       infosub = (
 
-          <DayMealsHistory meals={this.state.meals} user={this.props.user}/>
+          <DayMealsHistory meals={this.state.meals} user={this.props.user} deleteMeal={this.deleteMeal}/>
       )
     }
     return (

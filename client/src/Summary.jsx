@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import ProfileBar from './ProfileBar';
-import Header from './Header';
 import jwt from 'jsonwebtoken'
 import {
   BrowserRouter as Router,
@@ -99,7 +98,7 @@ class Summary extends React.Component {
       
       <div className='main'>
       <ProfileBar 
-                user={name}
+                user={this.props.user}
                 handNewMealSubmit={this.handNewMealSubmit}
                 handleAddMealClick={this.handleAddMealClick}
                 />
