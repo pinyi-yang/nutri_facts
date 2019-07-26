@@ -16,7 +16,7 @@ class PendingMeal extends React.Component {
   }
 
   handleNextPageClick() {
-    let max = this.props.options.length;
+    let max = this.props.pendingMeal.length;
     max = max > 4 ? max - 4 : 0;
     let current = this.state.viewpoint;
     if (current < max) {
@@ -47,6 +47,7 @@ class PendingMeal extends React.Component {
           </div>
           <div className='pending-meal-container'>
             <div className='pending-meal-list'>
+              <img src='./img/last_page.png' className='page-icon' id='pending-lastpage-icon' alt='last page' onClick={this.handleLastPageClick}/>
               {pendingMeal.map((option, i) => (
                 <div className='pending-option' 
                       key={i}
@@ -55,6 +56,7 @@ class PendingMeal extends React.Component {
                   <button value={i} onClick={this.props.handlePendingOptionRemove}>Remove</button>
                 </div>
               ))}
+              <img src='./img/next_page.png' className='page-icon' id='pending-nextpage-icon' alt='last page' onClick={this.handleNextPageClick}/>
             </div>
             <PendingMealNutri pendingMeal={this.props.pendingMeal}/>
           </div>
