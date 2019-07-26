@@ -276,11 +276,11 @@ nav {
 }
 
 #options-lastpage-icon {
-  left: -0.5%;
+  left: -0.1%;
 }
 
 #options-nextpage-icon {
-  right: -0.5%;
+  right: -0.1%;
 }
 .pending-option-title {
   background: lightgrey;
@@ -290,13 +290,28 @@ nav {
   border-radius: 3px;
   line-height: 130%;
 }
+
+#pending-lastpage-icon, #pending-nextpage-icon {
+  top: 30%;
+  width: 32px;
+}
+
+#pending-lastpage-icon {
+  left: -0.1%;
+}
+
+#pending-nextpage-icon {
+  right: -0.1%;
+}
+
 .message-div {
-  color: white;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+
 
 /* ================================================================================================================ */
 
@@ -306,9 +321,9 @@ nav {
 
 }
 
-.type {
+/* .type {
 color: white;
-}
+} */
 
 .current  {
 display: inline-block;
