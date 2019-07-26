@@ -10,11 +10,12 @@
   display:flex;
   flex-direction:row;
   overflow-x: auto;
+height:400px;
 }
 .mealRecomendations .meal {
   flex-shrink: 0;
-  width: 300px;
-  height: 300px;
+  width: relative;
+  height:relative;
 }
 
 .day-meals-container {
@@ -180,6 +181,15 @@ margin: 20px;
 
 }
 
+.recipe{
+  border-radius: 50px;
+  font-size: 24px;
+  font-weight: bolder;
+  color:white;
+  text-decoration-line: none;
+  vertical-align: text-bottom;
+  text-align:center;
+}
 .end {
 display: inline-block;
 margin: 20px;
@@ -187,6 +197,7 @@ margin: 20px;
 .meal{
   height: 335px;
   width: 24vw;
+  border-radius: 15px;
 }
 .meal_recomendations{
   text-align: center;

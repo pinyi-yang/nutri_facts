@@ -39,8 +39,8 @@ class DayMealsRecomm extends React.Component {
   for(var i=0; i<arr.length;i++){
       display.push(
         <div className ='meal'>
-          <a href={arr[i].recipe.url} target= '_blank' className='recipe' rel="noopener noreferrer">{arr[i].recipe.label}</a>
-          <img src={arr[i].recipe.image} alt=" food image" className='recipe'/>
+          <a href={arr[i].recipe.url} target= '_blank' className='recipe' rel="noopener noreferrer">{arr[i].recipe.label}<img src={arr[i].recipe.image} alt=" food image" className='recipe'/></a>
+          
         </div>
       )
     }
