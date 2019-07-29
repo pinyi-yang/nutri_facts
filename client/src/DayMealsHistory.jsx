@@ -25,7 +25,7 @@ const DayMealsHistory = props => {
     <div className='day-meals-history'>
       <div className='meal-history-title'>
         <b>Hi, {props.user.name}, </b>
-        you eat {meals.length} times, today.
+        you eat {meals.length} times, {props.date === moment().format('YYYY-MM-DD')? 'today': ` on ${props.date}`}.
       </div>
 
       {content}

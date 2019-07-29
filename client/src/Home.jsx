@@ -17,6 +17,7 @@ class Home extends React.Component {
       pendingMeal: [],
       addMeal: false,
       date: moment().format('YYYY-MM-DD'),
+      pendingdate: moment().format('YYYY-MM-DD'),
       type: '',
       message: ''
     }
@@ -26,6 +27,8 @@ class Home extends React.Component {
     this.handlePendingOptionRemove = this.handlePendingOptionRemove.bind(this);
     this.handEnjoyMealClick = this.handEnjoyMealClick.bind(this);
     this.deleteMeal = this.deleteMeal.bind(this);
+    this.handleDateChangeSubmit = this.handleDateChangeSubmit.bind(this);
+    this.handleDateChange = this.handleDateChange.bind(this);
   }
 
   handleAddMealClick() {
@@ -102,6 +105,40 @@ class Home extends React.Component {
     
   }
 
+  handleDateChangeSubmit(e) {
+    e.preventDefault();
+    console.log(this.state.pendingdate);
+    let newdate = this.state.pendingdate
+    this.setState({
+      date: newdate
+    })
+
+    console.log('get meal from user');
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('mernToken');
+    axios.get(`/api/users/${this.props.user._id}/meals?start=${this.state.pendingdate}&end=${this.state.pendingdate}`).then(res => {
+      let {messageType, meals, goals} = res.data;
+      if (messageType === 'success') {
+        this.setState({
+          meals,
+          goal: goals[goals.length-1]
+        })
+
+      } else {
+        console.log('error, could not get meals and goal info from user');
+        this.setState({
+          message: 'error, could not get meals and goal info from user'
+        })
+      }
+      
+    })
+  }
+
+  handleDateChange(e) {
+    this.setState({
+      pendingdate: e.target.value
+    })
+  } 
+
   componentDidMount() {
     console.log('get meal from user');
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('mernToken');
@@ -138,7 +175,7 @@ class Home extends React.Component {
     } else {
       infosub = (
 
-          <DayMealsHistory meals={this.state.meals} user={this.props.user} deleteMeal={this.deleteMeal}/>
+          <DayMealsHistory date={this.state.date} meals={this.state.meals} user={this.props.user} deleteMeal={this.deleteMeal}/>
       )
     }
     return (
@@ -152,7 +189,13 @@ class Home extends React.Component {
 
 
         <div className='info day-meals-container'>
-          <DayMealsCharts goal={this.state.goal} meals={this.state.meals} date={this.state.date}/>
+          <div className='day-meals-chart'>
+            <form onSubmit={this.handleDateChangeSubmit}>
+              <input type='date' value={this.state.pendingdate} onChange={this.handleDateChange}/> {' '}
+              <input type='submit' value='GO' />
+            </form>
+            <DayMealsCharts goal={this.state.goal} meals={this.state.meals} date={this.state.date}/>
+          </div>
           {infosub}
         </div>
       </div>
