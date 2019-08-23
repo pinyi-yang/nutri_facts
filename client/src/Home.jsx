@@ -72,10 +72,10 @@ class Home extends React.Component {
         type: type
       }
       console.log(newmeal);
-      mealscopy.push(newmeal);
       axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('mernToken');
       axios.post(`/api/users/${this.props.user._id}/meals`, {foods, type}).then(res => {
-        console.log('added new meal');
+        console.log('added new meal', res.data);
+        mealscopy.push(res.data)
         this.setState({
           meals: mealscopy,
           pendingMeal: [],

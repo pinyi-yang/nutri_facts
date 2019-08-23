@@ -11,10 +11,11 @@ body {
 .container{
   display:flex;
 }
-/* .day-meals-container {
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
-} */
+
+.day-meals-container {
+  /* grid-template-rows: 1fr 1fr 1fr;
+  display: grid; */
+}
 
 .App-header {
   height: 16vh;
@@ -186,7 +187,7 @@ nav {
   display: flex;
   justify-content: space-around;
   flex-direction: row;
-  margin-top: 2%;
+  margin-top: 1%;
 }
 
 .meal-history-meals ul {
@@ -261,6 +262,8 @@ nav {
 #loadinggif {
   margin-left: 25%;
   text-align: center;
+  height: 18vh;
+  border-radius: 10px;
 }
 .meals-options-list-div {
   height: 100%;
@@ -278,6 +281,8 @@ nav {
   display: grid;
   grid-template-columns: 4fr 1fr;
   border: black solid 2px;
+  border-radius: 5px;
+  padding: 3px;
 }
 
 .meals-option, .pending-option {
@@ -311,11 +316,11 @@ nav {
 }
 
 #options-lastpage-icon {
-  left: -0.5%;
+  left: -0.1%;
 }
 
 #options-nextpage-icon {
-  right: -0.5%;
+  right: -0.1%;
 }
 .pending-option-title {
   background: lightgrey;
@@ -325,13 +330,28 @@ nav {
   border-radius: 3px;
   line-height: 130%;
 }
+
+#pending-lastpage-icon, #pending-nextpage-icon {
+  top: 30%;
+  width: 32px;
+}
+
+#pending-lastpage-icon {
+  left: -0.1%;
+}
+
+#pending-nextpage-icon {
+  right: -0.1%;
+}
+
 .message-div {
-  color: white;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+
 
 /* ================================================================================================================ */
 
@@ -341,9 +361,9 @@ nav {
 
 }
 
-.type {
+/* .type {
 color: white;
-}
+} */
 
 .current  {
 display: inline-block;
@@ -448,9 +468,6 @@ justify-content: center
   background-attachment: fixed;
 }
 
-#loadinggif {
-  height: 20vh;
-}
 #landing {
   display: block;
   width: 1170px;

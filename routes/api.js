@@ -148,7 +148,7 @@ router.post('/users/:uid/meals', (req,res) => {
     User.findById(req.params.uid, (err, user) => {
       user.meals.push(meal._id);
       user.save();
-      res.json(user);
+      res.json(meal);
       })
     })
 })

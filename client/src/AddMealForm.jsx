@@ -9,7 +9,7 @@ class AddMealForm extends React.Component {
     this.state = {
       foods: '',
       dishes: '',
-      type: '',
+      type: 'snack',
       options: [],
       message: '',
       mouseOnOption: null
@@ -104,7 +104,6 @@ class AddMealForm extends React.Component {
   }
 
   render() {
-
     if (this.state.dishes || this.state.foods || this.state.options.length>0) {
       var content = (
         this.state.message === 'Loading Data' ? 
@@ -132,26 +131,25 @@ class AddMealForm extends React.Component {
         <div className='add-meal-form'>
           <form onSubmit={this.handleShowMeal}>
             <div className="type">
-              Type: 
-              <select name='type' onChange={this.handleTypeChange}>
-                <option value=''>--</option>
+              Type: {' '}
+              <select name='type' value={this.state.type} onChange={this.handleTypeChange}>
+                <option value='snack' selected="selected">Snack</option>
                 <option value='breakfast'>Breakfast</option>
                 <option value='lunch'>Lunch</option>
-                <option value='snack'>Snack</option>
                 <option value='supper'>Supper</option>
                 <option value='dessert'>Dessert</option>
               </select>
             </div>
 
             <div className="type">
-              Add Foods:
+              Add Foods: {' '}
               <input type='text' name='foods' value={this.state.foods} onChange={this.handleFoodsChange} placeholder='names for food'/>
               {' '}
               <input type='submit' value='SHOW' />
             </div>
 
             <div className="type">
-              Add a Dish:
+              Add a Dish: {' '}
               <input type='text' name='dish' value={this.state.dishes} onChange={this.handleDishesChange} placeholder='name for dish' />
               {' '}
               <input type='submit' value='SHOW' />
