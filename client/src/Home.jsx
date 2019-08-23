@@ -17,6 +17,7 @@ class Home extends React.Component {
       pendingMeal: [],
       addMeal: false,
       date: moment().format('YYYY-MM-DD'),
+      pendingdate: moment().format('YYYY-MM-DD'),
       type: '',
       message: ''
     }
@@ -111,8 +112,27 @@ class Home extends React.Component {
     this.setState({
       date: newdate
     })
+
+    console.log('get meal from user');
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('mernToken');
+    axios.get(`/api/users/${this.props.user._id}/meals?start=${this.state.pendingdate}&end=${this.state.pendingdate}`).then(res => {
+      let {messageType, meals, goals} = res.data;
+      if (messageType === 'success') {
+        this.setState({
+          meals,
+          goal: goals[goals.length-1]
+        })
+
+      } else {
+        console.log('error, could not get meals and goal info from user');
+        this.setState({
+          message: 'error, could not get meals and goal info from user'
+        })
+      }
+      
+    })
   }
-​
+
   handleDateChange(e) {
     this.setState({
       pendingdate: e.target.value
@@ -169,11 +189,13 @@ class Home extends React.Component {
 
 
         <div className='info day-meals-container'>
-          <form onSubmit={this.handleDateChangeSubmit}>
-            <input type='date' value={this.state.pendingdate} onChange={this.handleDateChange}/> {' '}
-            <input type='submit' value='GO' />
-          </form>
-          <DayMealsCharts goal={this.state.goal} meals={this.state.meals} date={this.state.date}/>
+          <div className='day-meals-chart'>
+            <form onSubmit={this.handleDateChangeSubmit}>
+              <input type='date' value={this.state.pendingdate} onChange={this.handleDateChange}/> {' '}
+              <input type='submit' value='GO' />
+            </form>
+            <DayMealsCharts goal={this.state.goal} meals={this.state.meals} date={this.state.date}/>
+          </div>
           {infosub}
         </div>
       </div>

@@ -11,6 +11,7 @@ body {
 .container{
   display:flex;
 }
+
 .day-meals-container {
   /* grid-template-rows: 1fr 1fr 1fr;
   display: grid; */

@@ -74,8 +74,8 @@ class Login extends React.Component {
                   placehoder='Enter your password' />
                   <br/><br/>
           <input className="loginBtn" type='submit' value='Login' />
+          <p className='error'>{this.state.message}</p>
         </form>
-        <p className='error'>{this.state.message}</p>
       </div>
     </div>
     );
