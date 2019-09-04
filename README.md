@@ -15,7 +15,7 @@ This is a group project with *[Reid Miller](https://github.com/rmiller999)*, *[R
 
 | Login with JWT<br> See your Intake Stats | Meal Recommendation by your choice |
 |:---:|:---:|
-|![Login](./readmeFiles/login.gif) | ![mealInfo](./readmeFiles/mealInfo.gif) |
+|![Login](./readmeFiles/login.gif) | ![mealInfo](./readmeFiles/mealinfo.gif) |
 
 | Add a Meal | Remove a Meal
 |:---:|:---:|
