@@ -117,7 +117,7 @@ router.get('/users/:id', (req, res) => {
   })
 })
 
-router.get('meals/:id', (req,res) => {
+router.get('/meals/:id', (req,res) => {
   Meals.findById(req.params.id, (err, meals) => {
   if (err) {
       res.json(err)
