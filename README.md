@@ -1,5 +1,4 @@
 # Nutri Facts
-**[Live App](https://nutri-facts.herokuapp.com/)**
 
 Nutri Facts is a diet tracker with food suggestions and nutrient status visualization. It help you track your overall intake versus the nutrient goal for the users. It also recommend meal for users when they have no idea what to eat based on their criteria.
 
